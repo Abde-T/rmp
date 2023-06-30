@@ -1,0 +1,250 @@
+@import url("https://fonts.cdnfonts.com/css/glitch-goblin");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  color: #81f775;
+  background-color: #e6e6e7;
+}
+.code {
+  mix-blend-mode: darken;
+  width: 800px;
+  margin: -125px -120px 0 0;
+}
+.main__nav {
+  margin: -150px 0 0 0px;
+}
+.landing__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  width: 100%;
+  max-width: 1400px;
+}
+
+.logo {
+  filter: brightness(0);
+  height: 200px;
+  margin-left: -55px;
+}
+.landing__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.landing__button {
+  position: absolute;
+  font-family: "Glitch Goblin", sans-serif;
+  color: #e6e6e7;
+  margin: -100px 0 0 0;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #242424;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  animation: glitch__Button 800ms infinite;
+}
+
+.landing__button:focus,
+.landing__button:focus-visible {
+  outline: 40px auto -webkit-focus-ring-color;
+}
+
+.landing__phrase {
+  font-family: "Glitch Goblin", sans-serif;
+  color: #242424;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: 10px;
+}
+.glitch {
+  font-size: 30px;
+  color: #adaaaa;
+  animation: glitch 750ms infinite;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  font-family: "Glitch Goblin", sans-serif;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+}
+.glitch2Bedore {
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.5rem;
+  color: white;
+}
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+@keyframes glitch__Button {
+  0% {
+    box-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    box-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    box-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    box-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+      0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    box-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    box-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+      0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    box-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+.containerGlitch {
+  width: 100%;
+  line-height: 1.5;
+  height: auto;
+}
+
+@media (max-width: 1280px) {
+  .landing__wrapper {
+    margin-left: 10px;
+  }
+  .landing__phrase {
+    margin-top: 10px;
+    font-size: 33px;
+  }
+  .landing__button {
+    margin: -100px 0 0 10px;
+  }
+}
+@media (max-width: 1200px) {
+  .landing__wrapper {
+    margin-left: 10px;
+  }
+  .landing__phrase {
+    margin-top: 10px;
+    font-size: 24px;
+    letter-spacing: 7px;
+  }
+  .logo {
+    margin-top: 50px;
+  }
+  .glitch {
+    font-size: 25px;
+  }
+  .landing__button {
+    margin: -100px 0 0 10px;
+  }
+  .code {
+    margin-top: -190px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .landing__wrapper {
+    flex-direction: column;
+  }
+  .landing__phrase {
+    margin-top: 10px;
+    font-size: 30px;
+    letter-spacing: 3px;
+    padding: 2px;
+  }
+  .glitch {
+    font-size: 25px;
+  }
+  .landing__button {
+    margin: -720px 0 0 10px;
+  }
+  .code {
+    margin: 0 0 0 -70px;
+    width: 900px;
+  }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        margin-top: 20px;
+    }
+    .landing__phrase {
+      font-size: 20px;
+      letter-spacing: 1px;
+      margin-top: -20px;
+    }
+    .glitch {
+      font-size: 20px;
+    }
+    .landing__button {
+      margin: -400px 0 0 10px;
+      font-size: 14px;
+    }
+    .code {
+      margin: 50px 0 0 -45px;
+      width: 450px;
+    }
+  }
