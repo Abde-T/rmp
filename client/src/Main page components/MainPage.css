@@ -13,17 +13,24 @@
   mix-blend-mode: darken;
   width: 800px;
   margin: -125px -120px 0 0;
+  pointer-events: none;
 }
 .main__nav {
   margin: -150px 0 0 0px;
 }
-.landing__container {
+.landing__container,
+.info__container,
+.details__container,
+.form__container,
+.footer__container {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.landing__container {
+  height: 100vh;
 }
 .row {
   width: 100%;
@@ -31,9 +38,8 @@
 }
 
 .logo {
-  filter: brightness(0);
-  height: 200px;
-  margin-left: -55px;
+  height: 150px;
+  pointer-events: none;
 }
 .landing__wrapper {
   width: 100%;
@@ -55,7 +61,7 @@
   background-color: #242424;
   cursor: pointer;
   transition: border-color 0.25s;
-  animation: glitch__Button 800ms infinite;
+  animation: glitch__border 800ms infinite;
 }
 
 .landing__button:focus,
@@ -90,6 +96,116 @@
   font-family: "Roboto", sans-serif;
   letter-spacing: 0.5rem;
   color: white;
+}
+.form__wrapper {
+  display: flex;
+  margin: 100px 0;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.form__phrase {
+  font-family: "Glitch Goblin", sans-serif;
+  color: #242424;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  margin-left: 150px;
+}
+.coder {
+  width: 200%;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+.form {
+  --bg-color: #e6e6e7;
+  --main-color: #242424;
+  backdrop-filter: blur(50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  position: absolute;
+  color: #242424;
+  left: 25%;
+  top: 50%;
+  width: 700px;
+  height: 350px;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-family: "Glitch Goblin", sans-serif;
+}
+
+.title {
+  color: #242424;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #242424;
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px #242424;
+  font-size: 15px;
+  font-weight: 600;
+  color: #242424;
+  padding: 5px 10px;
+  outline: none;
+}
+.input::placeholder {
+  color: #242424;
+  opacity: 0.8;
+}
+.input:focus {
+  border: 2px solid #242424;
+}
+.login-with {
+  display: flex;
+  gap: 20px;
+}
+.button-confirm {
+  margin: 50px 0 0 0;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #242424;
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px #242424;
+  font-size: 17px;
+  font-weight: 600;
+  color: #242424;
+  cursor: pointer;
+}
+
+.footer__container{
+ background-color: #242424;
+}
+.footer__logo{
+  filter: invert();
+  height: 150px;
+  pointer-events: none;
+}
+.footer__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.footer__wrapper p{
+  color: #e6e6e7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 @keyframes glitch {
   0% {
@@ -127,7 +243,7 @@
   }
 }
 
-@keyframes glitch__Button {
+@keyframes glitch__border {
   0% {
     box-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
       -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
@@ -169,6 +285,89 @@
   height: auto;
 }
 
+.info__container,
+.details__container {
+  background-color: #d8d8d8;
+}
+.details__container {
+  padding: 100px;
+}
+.pc {
+  width: 1000px;
+  margin: 100px 0 0 -155px;
+  pointer-events: none;
+}
+.info__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.info__wrapper::after {
+  content: "";
+  width: 1000px;
+  height: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: #242424;
+  animation: glitch__border 800ms infinite;
+}
+.info__phrase {
+  font-family: "Glitch Goblin", sans-serif;
+  max-width: 50%;
+  color: #000000;
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: 10px;
+  line-height: 1.5;
+}
+.details__title {
+  font-family: "Glitch Goblin", sans-serif;
+  font-size: 30px;
+  color: #000000;
+  text-align: center;
+}
+.details__wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detail {
+  margin-top: 100px;
+  background-color: #e6e6e7;
+  height: 300px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  animation: glitch__border 950ms infinite;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.detail h2 {
+  font-family: "Glitch Goblin", sans-serif;
+  font-size: 25px;
+  letter-spacing: 5px;
+  padding: 0 10px;
+  line-height: 1.5;
+  text-align: center;
+  color: #000000;
+}
+.detail button {
+  height: 50px;
+  width: 200px;
+  color: white;
+  border-radius: 5px;
+  background-color: #242424;
+  animation: glitch__border 800ms infinite;
+}
+
 @media (max-width: 1280px) {
   .landing__wrapper {
     margin-left: 10px;
@@ -205,7 +404,6 @@
 }
 
 @media (max-width: 900px) {
-
   .landing__wrapper {
     flex-direction: column;
   }
@@ -228,23 +426,23 @@
 }
 
 @media (max-width: 400px) {
-    .logo {
-        margin-top: 20px;
-    }
-    .landing__phrase {
-      font-size: 20px;
-      letter-spacing: 1px;
-      margin-top: -20px;
-    }
-    .glitch {
-      font-size: 20px;
-    }
-    .landing__button {
-      margin: -400px 0 0 10px;
-      font-size: 14px;
-    }
-    .code {
-      margin: 50px 0 0 -45px;
-      width: 450px;
-    }
+  .logo {
+    margin-top: 20px;
   }
+  .landing__phrase {
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-top: -20px;
+  }
+  .glitch {
+    font-size: 20px;
+  }
+  .landing__button {
+    margin: -400px 0 0 10px;
+    font-size: 14px;
+  }
+  .code {
+    margin: 50px 0 0 -45px;
+    width: 450px;
+  }
+}

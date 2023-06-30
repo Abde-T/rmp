@@ -7,7 +7,7 @@ const Landing = () => {
     <div className="landing__container">
       <div className="row">
         <nav className="main__nav">
-          <img src={logo} className="logo" alt="React logo" />
+          <img src={logo} className="logo" alt="RMP logo" />
         </nav>
         <div className="landing__wrapper">
           <div className="containerGlitch">
@@ -17,7 +17,7 @@ const Landing = () => {
               </span> and Witness the Difference.
             </h1>
           </div>
-          <img src={code} className="code" alt="React logo" />
+          <img src={code} className="code" alt="gif" />
         </div>
         <button className="landing__button"> Level up your portfolio - Join now! </button>
       </div>
