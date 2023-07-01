@@ -6,7 +6,6 @@ const FormSection = () => {
     <div className="form__container">
       <div className="row">
         <div className="form__wrapper">
-
           <form className="form">
             <div name="title">
               sign up to continue
@@ -27,12 +26,8 @@ const FormSection = () => {
           </form>
           <img src={coder} className="coder" alt="coder gif" />
           <h2 className="form__phrase">
-            Your Portfolio Journey Starts Here: Join{" "}
-            <span className="glitch" id="textGlitch">
-              {" "}
-              Review My Portfolio{" "}
-            </span>{" "}
-            and Embark on a Path of Continuous Improvement.
+            Your Portfolio Journey Starts Here: Join <span className="glitch" id="textGlitch">Review My Portfolio
+            </span> and Embark on a Path of Continuous Improvement.
           </h2>
         </div>
       </div>
