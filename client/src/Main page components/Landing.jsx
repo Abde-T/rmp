@@ -7,19 +7,19 @@ const Landing = () => {
     <div className="landing__container">
       <div className="row">
         <nav className="main__nav">
-          <img src={logo} className="logo" alt="RMP logo" />
+          <img src={logo} className="logo" alt="RMP logo"  data-aos="fade-down" />
         </nav>
         <div className="landing__wrapper">
           <div className="containerGlitch">
-            <h1 className="landing__phrase">
+            <h1 className="landing__phrase" data-aos="fade-right">
               Transform Your Portfolio Experience: Engage with a Supportive
               Community on<span className="glitch" id="textGlitch"> Review My Portfolio
               </span> and Witness the Difference.
             </h1>
           </div>
-          <img src={code} className="code" alt="gif" />
+          <img src={code} className="code" alt="gif" data-aos="fade-left"/>
         </div>
-        <button className="landing__button"> Level up your portfolio - Join now! </button>
+        <button className="landing__button" data-aos="fade-up"> Level up your portfolio - Join now! </button>
       </div>
     </div>
   );

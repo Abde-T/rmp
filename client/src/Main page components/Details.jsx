@@ -4,17 +4,17 @@ const Details = () => {
   return (
     <div className="details__container">
       <div className="row">
-        <h2 className="details__title">How It Works:</h2>
+        <h2 className="details__title" data-aos="fade-in">How It Works:</h2>
         <div className="details__wrapper">
-          <div className="detail">
+          <div className="detail" data-aos="fade-right">
             <h2> create an account </h2>
-            <button> JOIN NOW </button>
+            <button> START NOW </button>
           </div>
-          <div className="detail">
+          <div className="detail" data-aos="fade-up">
             <h2> Upload your Portfolio </h2>
-            <button> JOIN NOW </button>
+            <button> UPLOAD NOW </button>
           </div>
-          <div className="detail">
+          <div className="detail" data-aos="fade-left">
             <h2> GET FEEDBACK </h2>
             <button> JOIN NOW </button>
           </div>
