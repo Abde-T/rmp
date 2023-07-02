@@ -51,8 +51,9 @@
 }
 
 .logo {
-  height: 150px;
+  height: 70px;
   pointer-events: none;
+  margin: 0 0 30px 0;
 }
 .landing__wrapper {
   width: 100%;
@@ -65,7 +66,7 @@
   position: absolute;
   font-family: "Glitch Goblin", sans-serif;
   color: #e6e6e7;
-  margin: -100px 0 0 0;
+  margin: -80px 0 0 0;
   border-radius: 2px;
   border: 2px solid transparent;
   padding: 0.6em 1.2em;
@@ -156,7 +157,7 @@
   font-family: "Glitch Goblin", sans-serif;
 }
 
-.input {
+.input_ {
   width: 100%;
   height: 40px;
   border-radius: 5px;
@@ -169,10 +170,10 @@
   padding: 5px 10px;
   outline: none;
 }
-.input::placeholder {
+.input_::placeholder {
   color: #242424;
 }
-.input:focus {
+.input_:focus {
   border: 2px solid #242424;
 }
 
@@ -191,11 +192,12 @@
 }
 
 .footer__container {
+  padding: 30px;
   background-color: #242424;
 }
 .footer__logo {
   filter: invert();
-  height: 150px;
+  height: 100px;
   pointer-events: none;
 }
 .footer__wrapper {

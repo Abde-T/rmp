@@ -14,13 +14,13 @@ const FormSection = () => {
               type="email"
               placeholder="Email"
               name="email"
-              className="input"
+              className="input_"
             />
             <input
               type="password"
               placeholder="Password"
               name="password"
-              className="input"
+              className="input_"
             />
             <button className="button-confirm">Let`s go →</button>
           </form>
