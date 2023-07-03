@@ -2,6 +2,7 @@ import React from "react";
 import code from "../assets/code.gif";
 import logo from "../assets/logo.png";
 import "./MainPage.css";
+import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <div className="landing__container">
@@ -19,7 +20,9 @@ const Landing = () => {
           </div>
           <img src={code} className="code" alt="gif" data-aos="fade-left"/>
         </div>
+        <Link to={'/home'}>
         <button className="landing__button" data-aos="fade-up"> Level up your portfolio - Join now! </button>
+        </Link>
       </div>
     </div>
   );

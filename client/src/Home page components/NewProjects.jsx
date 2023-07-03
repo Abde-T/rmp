@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-const Featured = () => {
-  const array1 = [1, 2, 3, 4];
+const NewProjects = () => {
+        const array1 = [1, 2, 3, 4];
   return (
     <>
       <div className="cardContainer">
         <div className="card__wrapper">
-          <h1>Featured</h1>
+          <h1>Latest Projects</h1>
           <p>see more</p>
         </div>
         <div className="cards">
@@ -33,4 +33,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default NewProjects;

@@ -2,6 +2,9 @@ import React from 'react';
 import SideBar from '../Home page components/SideBar';
 import Featured from '../Home page components/Featured';
 import Nav from '../Home page components/Nav';
+import Developers from '../Home page components/Developers';
+import NewProjects from '../Home page components/NewProjects';
+import Projects from '../Home page components/Projects';
 
 function HomePage(props) {
     return (
@@ -9,6 +12,9 @@ function HomePage(props) {
             <SideBar/>
             <Nav/>
             <Featured/>
+            <Developers/>
+            <NewProjects/>
+            <Projects/>
         </div>
     );
 }

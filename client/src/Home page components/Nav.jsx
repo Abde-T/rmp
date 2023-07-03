@@ -1,31 +1,50 @@
 import React from "react";
+import logo from "../assets/logo.png";
 
 const Nav = () => {
-    document.addEventListener("click", e => {
-        const isDropdownButton = e.target.matches("[data-dropdown-button]")
-        if (!isDropdownButton && e.target.closest("[data-dropdown]") != null) return
-      
-        let currentDropdown
-        if (isDropdownButton) {
-          currentDropdown = e.target.closest("[data-dropdown]")
-          currentDropdown.classList.toggle("active")
-        }
-      
-        document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
-          if (dropdown === currentDropdown) return
-          dropdown.classList.remove("active")
-        })
-      })
+  document.addEventListener("click", (e) => {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]");
+    if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
+      return;
+
+    let currentDropdown;
+    if (isDropdownButton) {
+      currentDropdown = e.target.closest("[data-dropdown]");
+      currentDropdown.classList.toggle("active");
+    }
+
+    document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
+      if (dropdown === currentDropdown) return;
+      dropdown.classList.remove("active");
+    });
+  });
 
   return (
     <nav className="nav__container">
-      <div class="search">
-        <div class="search-box">
-          <div class="search-field">
-            <input placeholder="Search..." class="input" type="text" />
-            <div class="search-box-icon">
-              <button class="btn-icon-content">
-                <i class="search-icon">
+      <div className="burger__logo--wrapper">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="burger"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+        <img src={logo} className="SideBar__logo" alt="RMP logo" />
+      </div>
+      <div className="search">
+        <div className="search-box">
+          <div className="search-field">
+            <input placeholder="Search..." className="input" type="text" />
+            <div className="search-box-icon">
+              <button className="btn-icon-content">
+                <i className="search-icon">
                   <svg
                     xmlns="://www.w3.org/2000/svg"
                     version="1.1"
@@ -45,51 +64,43 @@ const Nav = () => {
       <div className="card">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           className="bell"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
           />
         </svg>
-        
-        <div class="header">
-    <div class="dropdown" data-dropdown>
-      <button class="link card_load" data-dropdown-button></button>
-      <div class="dropdown-menu">
-      <form className="nav__form">
-            <div name="title">
-              Upload project
+
+        <div className="header">
+          <div className="dropdown" data-dropdown>
+            <button className="link card_load" data-dropdown-button></button>
+            <div className="dropdown-menu">
+              <form className="nav__form">
+                <div name="title">Upload project</div>
+                <input
+                  type="name"
+                  placeholder="Project Name"
+                  name="ProjectName"
+                  className="input_"
+                />
+                <input
+                  type="text"
+                  placeholder="Description"
+                  name="Description"
+                  className="input_"
+                />
+                <input type="file" placeholder="" name="" className="input_" />
+                <button className="button-confirm">Logout →</button>
+              </form>
             </div>
-            <input
-              type="name"
-              placeholder="Project Name"
-              name="ProjectName"
-              className="input_"
-            />
-            <input
-              type="text"
-              placeholder="Description"
-              name="Description"
-              className="input_"
-            />
-            <input
-              type="file"
-              placeholder=""
-              name=""
-              className="input_"
-            />
-            <button className="button-confirm">Logout →</button>
-          </form>
-      </div>
-    </div>
-  </div>
+          </div>
+        </div>
       </div>
     </nav>
   );
