@@ -1,3 +1,4 @@
+@import url("https://fonts.cdnfonts.com/css/glitch-goblin");
 * {
   margin: 0;
   padding: 0;
@@ -13,13 +14,10 @@
   flex-direction: column;
   background-color: #242424;
   position: fixed;
-  margin-top: 90px;
   padding: 20px;
-  z-index: 1;
+  z-index: 3;
 }
-.SideBar__wrapper {
-  height: 100%;
-}
+
 .dotsIcon {
   height: 20px;
   display: inline;
@@ -28,7 +26,7 @@
 .icon__list {
   display: flex;
   margin-bottom: 15px;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
 }
 .icon {
@@ -37,18 +35,17 @@
 }
 .icon__text {
   margin-left: 10px;
+  font-size: 24px;
+  font-family: "Glitch Goblin", sans-serif;
   color: #e6e6e7;
 }
-.burger__logo--wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 .SideBar__logo {
-  height: 35px;
+  height: 40px;
   filter: invert();
   pointer-events: none;
-  margin-left: 20px;
+  margin-left: 70px;
+  z-index: 4;
 }
 .burger {
   height: 25px;
@@ -188,7 +185,21 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.dev__card{
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    120deg,
+    #e5e5e5 30%,
+    #f0f0f0 38%,
+    #f0f0f0 40%,
+    #e5e5e5 48%
+  );
+  border-radius: 50%;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load89234 2s infinite;
+}
 .card_load {
   width: 50px;
   height: 50px;
@@ -301,9 +312,10 @@
 .devContainer::after {
   content: "";
   width: 1000px;
-  height: 10px;
+  height: 5px;
+  border-radius: 20px;
   margin: 30px 0;
-  background-color: #808080;
+  background-color: #e6e6e7;
 }
 
 .card__wrapper {
@@ -490,7 +502,11 @@
     background-position: -100% 0;
   }
 }
-
+.SideBar__nav{
+  position: fixed;
+  z-index: 4;
+  background-color: #e6e6e7;
+}
 @media (max-width: 1900px) {
   .cardContainer {
     margin-left: 100px;
