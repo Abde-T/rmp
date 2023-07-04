@@ -11,7 +11,7 @@ const NewProjects = () => {
         </div>
         <div className="cards">
           {array1.fill(
-            <div className="card_">
+            <div className="card_" >
               <div className="card-1"></div>
               <div className="right">
                 <div className="card-2"></div>

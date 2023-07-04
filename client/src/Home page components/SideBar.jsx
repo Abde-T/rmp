@@ -90,7 +90,7 @@ const SideBar = () => {
             </NavText>
           </NavItem>
           {array1.fill(
-            <NavItem eventKey="dev">
+            <NavItem eventKey="dev" >
               <NavIcon>
                 <button className=" dev__card" data-dropdown-button></button>
               </NavIcon>
