@@ -2,22 +2,21 @@ import React from "react";
 import logo from "../assets/logo.png";
 
 const Nav = () => {
-  document.addEventListener("click", (e) => {
-    const isDropdownButton = e.target.matches("[data-dropdown-button]");
-    if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
-      return;
-
-    let currentDropdown;
+  document.addEventListener("click", e => {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]")
+    if (!isDropdownButton && e.target.closest("[data-dropdown]") != null) return
+  
+    let currentDropdown
     if (isDropdownButton) {
-      currentDropdown = e.target.closest("[data-dropdown]");
-      currentDropdown.classList.toggle("active");
+      currentDropdown = e.target.closest("[data-dropdown]")
+      currentDropdown.classList.toggle("active")
     }
-
-    document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
-      if (dropdown === currentDropdown) return;
-      dropdown.classList.remove("active");
-    });
-  });
+  
+    document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+      if (dropdown === currentDropdown) return
+      dropdown.classList.remove("active")
+    })
+  })
 
   return (
     <nav className="nav__container">
@@ -63,7 +62,7 @@ const Nav = () => {
 
         <div className="header">
           <div className="dropdown" data-dropdown>
-            <button className="link card_load" data-dropdown-button></button>
+            <button className="link card_load-" data-dropdown-button></button>
             <div className="dropdown-menu">
               <form className="nav__form">
                 <div name="title">Upload project</div>
@@ -77,6 +76,12 @@ const Nav = () => {
                   type="text"
                   placeholder="Description"
                   name="Description"
+                  className="input_"
+                />
+                 <input
+                  type="text"
+                  placeholder="tags"
+                  name="tags"
                   className="input_"
                 />
                 <input type="file" placeholder="" name="" className="input_" />

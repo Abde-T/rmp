@@ -1,5 +1,6 @@
 import React from "react";
 import coder from "../assets/coder.gif";
+import { Link } from "react-router-dom";
 
 const FormSection = () => {
   return (
@@ -22,7 +23,9 @@ const FormSection = () => {
               name="password"
               className="input_"
             />
+            <Link to={'/home'}>
             <button className="button-confirm">Let`s go →</button>
+            </Link>
           </form>
           <img src={coder} className="coder" alt="coder gif" data-aos="fade-right"/>
           <h2 className="form__phrase" data-aos="fade-left">

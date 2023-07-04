@@ -5,16 +5,13 @@
   box-sizing: border-box;
 }
 .HomePage__container {
-  background-color: #242424;
+  background-color: #e6e6e7;
   overflow-x: hidden;
 }
 
 .SideBar__container {
   height: 100%;
-  flex-direction: column;
-  background-color: #242424;
   position: fixed;
-  padding: 20px;
   z-index: 3;
 }
 
@@ -31,21 +28,22 @@
 }
 .icon {
   height: 40px;
-  color: #e6e6e7;
+  color: #242424;
 }
 .icon__text {
   margin-left: 10px;
   font-size: 24px;
   font-family: "Glitch Goblin", sans-serif;
-  color: #e6e6e7;
+  color: #242424;
 }
 
 .SideBar__logo {
   height: 40px;
-  filter: invert();
   pointer-events: none;
-  margin-left: 70px;
+  margin-left: 80px;
   z-index: 4;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 0px #000000;
 }
 .burger {
   height: 25px;
@@ -53,10 +51,11 @@
   color: #e6e6e7;
 }
 .nav__container {
-  background-color: #242424;
+  background-color: #e6e6e7;
   width: 100%;
   height: 100px;
   position: fixed;
+  box-shadow: 2px 2px 0 1.5px #242424;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -64,9 +63,9 @@
 }
 
 .search {
-  --input-text-color: #808080;
+  --input-text-color: #242424;
   --input-text-hover-color: transparent;
-  --input-border-hover-color: #999999;
+  --input-border-hover-color: #242424;
   --transition-cubic-bezier: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   max-width: 800px;
   width: 100%;
@@ -76,9 +75,9 @@
 .search-box {
   height: 40px;
   border-radius: 1px;
-  box-shadow: 1.5px 1.5px 0 2px #e6e6e7;
+  box-shadow: 1.5px 1.5px 0 2px #242424;
   padding: 5px 15px;
-  background: #242424;
+  background: #e6e6e7;
   transition: var(--transition-cubic-bezier);
 }
 
@@ -102,9 +101,9 @@
   border-color: transparent;
   font-size: 1rem;
   padding-right: 0px;
-  color: #e6e6e7;
+  color: #242424;
   background: transparent;
-  border-right: 2px solid #e6e6e7;
+  border-right: 2px solid #242424;
 }
 
 .input::-webkit-input-placeholder {
@@ -169,6 +168,7 @@
 }
 
 .search-icon {
+  filter: invert();
   width: 21px;
   height: 21px;
   position: absolute;
@@ -177,7 +177,7 @@
 }
 .bell {
   height: 30px;
-  color: #e6e6e7;
+  color: #242424;
 }
 .card {
   width: 200px;
@@ -273,11 +273,10 @@
   padding: 0.75rem;
   border-radius: 0.25rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-  z-index: 40;
 }
 
 .dropdown.active > .link + .dropdown-menu {
@@ -315,7 +314,7 @@
   height: 5px;
   border-radius: 20px;
   margin: 30px 0;
-  background-color: #e6e6e7;
+  background-color: #242424;
 }
 
 .card__wrapper {
@@ -327,12 +326,13 @@
   margin-left: 400px;
 }
 .card__wrapper h1 {
-  color: #e5e5e5;
+  color: #242424;
 }
 .card__wrapper p {
-  color: #e5e5e567;
+  color: #242424a6;
   margin-left: 10px;
 }
+
 .cards {
   display: flex;
   justify-content: center;
@@ -343,6 +343,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
 }
 .card_ {
   --gray: rgba(229, 231, 235, 1);
@@ -355,6 +356,8 @@
   background-color: rgba(255, 255, 255, 1);
   padding: 1.5rem;
   margin: 20px;
+  box-shadow: 3px 3px 0 1.5px #242424;
+
 }
 
 .card-1 {
@@ -425,10 +428,10 @@
 }
 .dev__wrapper h1 {
   margin-bottom: 20px;
-  color: #e5e5e5;
+  color: #242424;
 }
 .dev__wrapper p {
-  color: #e5e5e567;
+  color: #2424247e;
   margin-left: 10px;
   margin-bottom: 20px;
 }
@@ -436,15 +439,16 @@
   width: 190px;
   height: 90px;
   background: #ffff;
-  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 0 1.5px #242424;
   padding: 12px 10px;
   margin: 0 40px;
   border-radius: 10px;
 }
 
-.card_load {
+.card_load- {
   width: 70px;
   height: 70px;
+  box-shadow: 1px 1.5px 0 2px #242424;
   position: relative;
   float: left;
   background: linear-gradient(
@@ -529,7 +533,29 @@
     margin-left: 20px;
   }
   .cardContainer,
-  .card__wrapper {
+  .card__wrapper,
+  .dev__wrapper {
     margin-left: 0px;
   }
+}
+
+
+
+.alert{
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert h1{
+  color: #e6e6e7;
+}
+.alert__icon{
+  height: 100px;
+  color: #e6e6e7;
+  margin-right: 50px;
 }
