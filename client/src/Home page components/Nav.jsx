@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import { useDispatch, useSelector } from "react-redux";
-import FileBase from 'react-file-base64';
-import { createPost } from "../actions/posts";
+import Form from "./form/form";
 
-const Nav = ({ currentId, setCurrentId }) => {
+
+
+const Nav = ({currentID, setCurrentId}) => {
   document.addEventListener("click", (e) => {
     const isDropdownButton = e.target.matches("[data-dropdown-button]");
     if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
@@ -22,47 +22,8 @@ const Nav = ({ currentId, setCurrentId }) => {
     });
   });
 
+const user = null
 
-  const [postData, setPostData] = useState({
-    creator: "",
-    title: "",
-    Description: "",
-    tags: "",
-    selectedFile: "",
-  });
-
-  // const post = useSelector((state) =>
-  //   currentId ? state.posts.find((message) => message._id === currentId) : null
-  // );
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (post) setPostData(post);
-  // }, [post]);
-
-  const clear = () => {
-    // setCurrentId(0);
-    setPostData({
-      creator: "",
-      title: "",
-      message: "",
-      tags: "",
-      selectedFile: "",
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    dispatch(createPost(postData));
-    // if (currentId === 0) {
-    //   clear();
-    // } else {
-    //    dispatch(updatePost(currentId, postData));
-    //   clear();
-    // }
-  };
 
   return (
     <nav className="nav__container">
@@ -90,7 +51,9 @@ const Nav = ({ currentId, setCurrentId }) => {
           </div>
         </div>
       </div>
-      <div className="card">
+      {
+        !user ? (
+        <div className="card">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -110,46 +73,18 @@ const Nav = ({ currentId, setCurrentId }) => {
           <div className="dropdown" data-dropdown>
             <button className="link card_load-" data-dropdown-button></button>
             <div className="dropdown-menu">
-              <form className="nav__form" onSubmit={handleSubmit}>
-                <div name="title">Upload project</div>
-                <input
-                  type="title"
-                  placeholder="Project title"
-                  name="ProjectName"
-                  className="input_"
-                  value={postData.title}
-                  onChange={(e) =>
-                    setPostData({ ...postData, title: e.target.value })
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="Description"
-                  name="Description"
-                  className="input_"
-                  value={postData.Description}
-                  onChange={(e) =>
-                    setPostData({ ...postData, Description: e.target.value })
-                  }
-                />
-                <input
-                  type="text"
-                  placeholder="tags"
-                  name="tags"
-                  className="input_"
-                  value={postData.tags}
-                  onChange={(e) =>
-                    setPostData({ ...postData, tags: e.target.value })
-                  }
-                />
-             <FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
-                <button className="button-confirm">Post →</button>
-                <button className="button-confirm" onClick={clear}>Clear</button>
-              </form>
+              <Form currentID={currentID} setCurrentId={setCurrentId}/>
             </div>
           </div>
         </div>
       </div>
+        ):(
+          <>
+
+          </>
+        )
+      }
+      
     </nav>
   );
 };

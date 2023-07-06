@@ -1,7 +1,6 @@
 import React from "react";
 
 const Developers = () => {
-  const array1 = [1, 2, 3, 4,5,6];
   return (
     <>
       <div className="devContainer">
@@ -10,13 +9,13 @@ const Developers = () => {
           <p>see more</p>
         </div>
         <div className="cards">
-          {array1.fill(
-            <div className="card-" >
+          {new Array(4).fill(0).map((_, index) =>(
+            <div className="card-" key={index}>
               <div className="card_load"></div>
               <div className="card_load_extreme_title"></div>
               <div className="card_load_extreme_descripion"></div>
             </div>
-          )}
+          ))}
         </div>
       </div>
     </>

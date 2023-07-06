@@ -10,7 +10,7 @@ const SideBar = () => {
     <div className="SideBar__container">
 
       <SideNav
-        defaultSelected="home"
+        defaultselected="home"
         className="SideBar__nav"
         style={{
           backgroundColor: "#e6e6e7",
@@ -89,8 +89,8 @@ const SideBar = () => {
               Following
             </NavText>
           </NavItem>
-          {array1.fill(
-            <NavItem eventKey="dev" >
+          {new Array(4).fill(0).map((_, index) =>(
+            <NavItem eventKey="dev" key={index}>
               <NavIcon>
                 <button className=" dev__card" data-dropdown-button></button>
               </NavIcon>
@@ -103,7 +103,7 @@ const SideBar = () => {
                 Dev__Name
               </NavText>
             </NavItem>
-          )}
+          ))}
         </SideNav.Nav>
       </SideNav>
     </div>

@@ -1,27 +1,22 @@
 import React from "react";
+import CardLoadingstate from "../ui/CardLoadingstate";
+import Post from "./Post/Post";
+import { useSelector } from "react-redux";
 
-const Projects = () => {
-  const array1 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+const Projects = ({ setCurrentId }) => {
+  const posts = useSelector((state) => state.posts);
   return (
     <>
       <div className="cards-">
-        {array1.fill(
-          <div className="card_" >
-            <div className="card-1"></div>
-            <div className="right">
-              <div className="card-2"></div>
-              <div className="card-3"></div>
-              <div className="card-3"></div>
-              <div className="card-3"></div>
-              <div className="card-3"></div>
-              <div className="bottom">
-                <div className="card-4"></div>
-                <div className="card-4"></div>
-                <div className="card-4"></div>
-              </div>
-            </div>
-          </div>
-        )}
+      {!posts.length ? (
+            new Array(4).fill(0).map((_, index) =>(
+              <CardLoadingstate key={index} />
+            ))
+          ) : (
+            posts.map((post) => (
+              <Post post={post} setCurrentId={setCurrentId}  key={post.id}/>
+            ))
+          )}
       </div>
     </>
   );

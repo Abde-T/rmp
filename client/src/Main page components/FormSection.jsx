@@ -3,6 +3,7 @@ import coder from "../assets/coder.gif";
 import { Link } from "react-router-dom";
 
 const FormSection = () => {
+
   return (
     <div className="form__container">
       <div className="row">
