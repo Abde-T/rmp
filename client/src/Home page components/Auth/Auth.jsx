@@ -4,15 +4,34 @@ import SideBar from "../SideBar";
 import Input from "./Input";
 import { Button } from "@mui/material";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 import Icon from "./icon";
+import { useDispatch } from "react-redux";
+import { AUTH } from "../../constants/actionTypes";
+import { useNavigate } from "react-router-dom";
+import { signin, signup } from '../../actions/auth';
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 const Auth = () => {
+
+  const [form, setForm] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleChange = () => {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleShowPassword = () => setShowPassword(!showPassword);
+  
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isSignUp) {
+      dispatch(signup(form, navigate));
+    } else {
+      dispatch(signin(form, navigate));
+    }
+  };
   const switchMode = () => {
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     setShowPassword(false);
@@ -24,21 +43,22 @@ const Auth = () => {
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
-
-      history.push('/');
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
+  const googleError = () =>
+    alert("Google Sign In was unsuccessful. Try again later");
+
 
   return (
     <>
       <Nav />
       <SideBar />
       <div className="auth__container">
-        <form className="auth__form">
+        <form className="auth__form" onSubmit={handleSubmit}>
           <div name="title">{isSignUp ? "Sign Up" : "Sign In"}</div>
           {isSignUp && (
             <>
@@ -93,20 +113,9 @@ const Auth = () => {
           >
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
-          <Button
-            onClick={switchMode}
-            className="auth_button"
-            variant="containedInherit"
-            color="inherit"
-          >
-            {isSignUp
-              ? "Already have an account? Sign in"
-              : "Don't have an account? Sign Up"}
-          </Button>
 
-          <GoogleOAuthProvider 
-            >
-          <GoogleLogin
+          <GoogleOAuthProvider clientId="968042939162-b5eo76b82l6h5981mgdnolqsvqmn40lm.apps.googleusercontent.com">
+            <GoogleLogin
               render={(renderProps) => (
                 <button
                   type="button"
@@ -121,7 +130,17 @@ const Auth = () => {
               onFailure={googleError}
               cookiePolicy="single_host_origin"
             />
-          </GoogleOAuthProvider >
+          </GoogleOAuthProvider>
+
+          <Button
+            onClick={switchMode}
+            variant="containedInherit"
+            color="inherit"
+          >
+            {isSignUp
+              ? "Already have an account? Sign in"
+              : "Don't have an account? Sign Up"}
+          </Button>
         </form>
       </div>
     </>

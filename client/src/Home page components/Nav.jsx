@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import Form from "./form/form";
-import { Avatar } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 import UsersLoading from "../ui/UsersLoading";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import * as actionType from '../constants/actionTypes';
+import { useDispatch } from "react-redux";
+import decode from 'jwt-decode';
 
 const Nav = ({currentID, setCurrentId}) => {
   document.addEventListener("click", (e) => {
@@ -24,7 +26,31 @@ const Nav = ({currentID, setCurrentId}) => {
     });
   });
 
-const user = null
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  console.log(user)
+  
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+    navigate('/auth');
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
 
 
   return (
@@ -56,8 +82,9 @@ const user = null
       {
         user ? (
           <>
-         <Avatar className="" alt={user} src={user}>{user}</Avatar>
-         <button className="button-confirm">Logout</button>
+         <Avatar className="" alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
+         <Typography className='' variant="h6">{user?.result.name}</Typography>
+         <button className="button-confirm" onClick={logout}>Logout</button>
           </>
         ): (
           <UsersLoading currentID= {currentID} setCurrentId={setCurrentId}/>
