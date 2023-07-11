@@ -20,7 +20,7 @@ const Landing = () => {
           </div>
           <img src={code} className="code" alt="gif" data-aos="fade-left"/>
         </div>
-        <Link to={'/home'}>
+        <Link to={'/posts'}>
         <button className="landing__button" data-aos="fade-up"> Level up your portfolio - Join now! </button>
         </Link>
       </div>

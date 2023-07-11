@@ -8,7 +8,7 @@ const Developers = () => {
           <h1>Developers</h1>
           <p>see more</p>
         </div>
-        <div className="cards">
+        <div className="card_load_">
           {new Array(4).fill(0).map((_, index) =>(
             <div className="card-" key={index}>
               <div className="card_load"></div>

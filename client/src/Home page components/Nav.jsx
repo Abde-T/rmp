@@ -1,42 +1,29 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import Form from "./form/form";
-import { Avatar, Typography } from '@mui/material';
+import Form from "./form/Form";
+import { Avatar, Box, Divider, IconButton, Typography } from "@mui/material";
 import UsersLoading from "../ui/UsersLoading";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import * as actionType from '../constants/actionTypes';
+import * as actionType from "../constants/actionTypes";
 import { useDispatch } from "react-redux";
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Modal from "@mui/material/Modal";
+import { MuiChipsInput } from "mui-chips-input";
+import { getPostsBySearch } from "../actions/posts";
 
-const Nav = ({currentID, setCurrentId}) => {
-  document.addEventListener("click", (e) => {
-    const isDropdownButton = e.target.matches("[data-dropdown-button]");
-    if (!isDropdownButton && e.target.closest("[data-dropdown]") != null)
-      return;
+const Nav = ({ currentID, setCurrentId }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+  console.log(user);
 
-    let currentDropdown;
-    if (isDropdownButton) {
-      currentDropdown = e.target.closest("[data-dropdown]");
-      currentDropdown.classList.toggle("active");
-    }
-
-    document.querySelectorAll("[data-dropdown].active").forEach((dropdown) => {
-      if (dropdown === currentDropdown) return;
-      dropdown.classList.remove("active");
-    });
-  });
-
-
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  console.log(user)
-  
   const location = useLocation();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-    navigate('/auth');
+    navigate("/auth");
     setUser(null);
   };
 
@@ -49,19 +36,69 @@ const Nav = ({currentID, setCurrentId}) => {
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
 
-    setUser(JSON.parse(localStorage.getItem('profile')));
+    setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
+  const [Open, setOpen] = React.useState(false);
+  const HandleOpen = () => setOpen(true);
+  const HandleClose = () => setOpen(false);
+
+  const [search, setSearch] = useState("");
+  const [tags, setTags] = useState([]);
+
+  const searchPost = () => {
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
+      navigate(
+        `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+      );
+    } else {
+      navigate("/posts");
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      searchPost();
+    }
+  };
+
+
+  const handleChange = (newTags) => {setTags(newTags)};
+
+  
   return (
     <nav className="nav__container">
       <img src={logo} className="SideBar__logo" alt="RMP logo" />
       <div className="search">
         <div className="search-box">
           <div className="search-field">
-            <input placeholder="Search..." className="input" type="text" />
+            <input
+              placeholder="Search..."
+              className="input"
+              type="text"
+              onKeyDown={handleKeyPress}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <MuiChipsInput
+              style={{ margin: "0 50px 0 10px", border:'none' }}
+              value={tags}
+              onChange={handleChange}
+              label="Search Tags"
+              variant="outlined"
+            />
             <div className="search-box-icon">
-              <button className="btn-icon-content">
+              <button className="btn-icon-content" onClick={searchPost}>
                 <i className="search-icon">
                   <svg
                     xmlns="://www.w3.org/2000/svg"
@@ -79,23 +116,90 @@ const Nav = ({currentID, setCurrentId}) => {
           </div>
         </div>
       </div>
-      {
-        user ? (
-          <>
-         <Avatar className="" alt={user?.result.name} src={user?.result.imageUrl}>{user?.result.name.charAt(0)}</Avatar>
-         <Typography className='' variant="h6">{user?.result.name}</Typography>
-         <button className="button-confirm" onClick={logout}>Logout</button>
-          </>
-        ): (
-          <UsersLoading currentID= {currentID} setCurrentId={setCurrentId}/>
-        )?(
-          <Link to={'/auth'}>
-            <button className="button-confirm">Sign in</button>
-          </Link>
-        )
-        : null
-      }
-      
+      {user ? (
+        <>
+          <div className="user__wrapper">
+            <button className="button-confirm" onClick={HandleOpen}>
+              Upload
+            </button>
+            <Modal open={Open} onClose={HandleClose}>
+              <div className="upload__modal">
+                <Form currentID={currentID} setCurrentId={setCurrentId} />
+              </div>
+            </Modal>
+            <IconButton
+              onClick={handleClick}
+              aria-controls={open ? "account-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+            >
+              <Avatar
+                className="user__icon"
+                alt={user?.result.name}
+                src={user?.result.imageUrl}
+                sx={{ width: 40, height: 40 }}
+                style={{
+                  backgroundColor: "#242424",
+                  fontSize: "30px",
+                }}
+              >
+                {user?.result.name.charAt(0)}
+              </Avatar>
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              id="account-menu"
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: "visible",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  mt: 1.5,
+                  "& .MuiAvatar-root": {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  "&:before": {
+                    content: '""',
+                    display: "block",
+                    position: "absolute",
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
+                    zIndex: 0,
+                  },
+                },
+              }}
+              transformOrigin={{ horizontal: "right", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            >
+              <MenuItem>
+                <p className="user__name">{user?.result.name}</p>
+              </MenuItem>
+              <MenuItem>
+                <p className="user__name">{user?.result.Username}</p>
+              </MenuItem>
+              <Divider />
+              <MenuItem>
+                <button className="button-confirm" onClick={logout}>
+                  Logout
+                </button>
+              </MenuItem>
+            </Menu>
+          </div>
+        </>
+      ) : <UsersLoading currentID={currentID} setCurrentId={setCurrentId} /> ? (
+        <Link to={"/auth"}>
+          <button className="button-confirm signin_button">Sign in</button>
+        </Link>
+      ) : null}
     </nav>
   );
 };

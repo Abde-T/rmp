@@ -9,20 +9,26 @@ import Icon from "./icon";
 import { useDispatch } from "react-redux";
 import { AUTH } from "../../constants/actionTypes";
 import { useNavigate } from "react-router-dom";
-import { signin, signup } from '../../actions/auth';
+import { signin, signup } from "../../actions/auth";
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 const Auth = () => {
-
   const [form, setForm] = useState(initialState);
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleShowPassword = () => setShowPassword(!showPassword);
-  
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-  
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -40,18 +46,19 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
-
+    console.log("success", res);
     try {
       dispatch({ type: AUTH, data: { result, token } });
-      navigate("/home");
+      navigate("/posts");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const googleError = () =>
+  const googleError = () => {
     alert("Google Sign In was unsuccessful. Try again later");
-
+    console.log("failed", res);
+  };
 
   return (
     <>
@@ -88,23 +95,26 @@ const Auth = () => {
             handleChange={handleChange}
             type="email"
           />
-          <Input
-            className="auth_input-"
-            name="password"
-            label="Password"
-            handleChange={handleChange}
-            type={showPassword ? "text" : "password"}
-            handleShowPassword={handleShowPassword}
-          />
-          {isSignUp && (
             <Input
               className="auth_input-"
-              name="confirmPassword"
-              label="Confirm Password"
+              name="password"
+              label="Password"
               handleChange={handleChange}
-              type="password"
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
+
             />
-          )}
+            {isSignUp && (
+              <Input
+                className="auth_input-"
+                name="confirmPassword"
+                label="Confirm Password"
+                handleChange={handleChange}
+                type="password"
+              
+              />
+            )}
+
           <Button
             type="submit"
             className="auth_button"
@@ -114,23 +124,21 @@ const Auth = () => {
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
 
-          <GoogleOAuthProvider clientId="968042939162-b5eo76b82l6h5981mgdnolqsvqmn40lm.apps.googleusercontent.com">
-            <GoogleLogin
-              render={(renderProps) => (
-                <button
-                  type="button"
-                  className=""
-                  onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
-                >
-                  <FcGoogle className="" /> Sign in with google
-                </button>
-              )}
-              onSuccess={googleSuccess}
-              onFailure={googleError}
-              cookiePolicy="single_host_origin"
-            />
-          </GoogleOAuthProvider>
+          {/* <GoogleLogin
+            render={(renderProps) => (
+              <button
+                type="button"
+                className="auth_button"
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+              >
+                <FcGoogle className="" /> Sign in with google
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleError}
+            cookiePolicy="single_host_origin"
+          /> */}
 
           <Button
             onClick={switchMode}
