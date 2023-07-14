@@ -3,14 +3,14 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../actions/posts";
+import { getAllPosts } from "../actions/posts";
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   
   useEffect(() => {
     if (page) {
-      dispatch(getPosts(page));
+      dispatch(getAllPosts(page));
     }
   }, [dispatch, page]);
 
@@ -19,12 +19,12 @@ const Paginate = ({ page }) => {
       count={numberOfPages}
       page={Number(page) || 1}
       variant="outlined"
-      color="primary"
+      color="standard"
       renderItem={(item) => (
         <PaginationItem
           {...item}
           component={Link}
-          to={`/posts?page=${item.page}`}
+          to={`/posts/projects?page=${item.page}`}
         />
       )}
     />

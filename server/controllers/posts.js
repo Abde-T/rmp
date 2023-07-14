@@ -4,11 +4,21 @@ import mongoose from 'mongoose';
 import PostDescription from '../models/postDescription.js' 
 const router = express.Router();
 
-export const getPosts = async (req, res) => {
+export const getPosts = async (req, res) => { 
+    try {
+        
+        const PostsDescription = await PostDescription.find();
+                
+        res.status(200).json(PostsDescription);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+export const getAllPosts = async (req, res) => {
     const { page } = req.query;
     
     try {
-        const LIMIT = 8;
+        const LIMIT = 12;
         const startIndex = (Number(page) - 1) * LIMIT; 
     
         const total = await PostDescription.countDocuments({});
@@ -47,6 +57,17 @@ export const getPost = async (req, res) => {
     }
 }
 
+export const getPostsByCreator = async (req, res) => {
+    const { name } = req.query;
+
+    try {
+        const posts = await PostDescription.find({ name });
+
+        res.json({ data: posts });
+    } catch (error) {    
+        res.status(404).json({ message: error.message });
+    }
+}
 
 export const createPost = async (req, res) => {
     const post = req.body;
@@ -105,5 +126,17 @@ export const likePost = async (req, res) => {
     res.status(200).json(updatedPost);
 }
 
+export const commentPost = async (req, res) => {
+    const { id } = req.params;
+    const { value } = req.body;
+
+    const post = await PostDescription.findById(id);
+
+    post.comments.push(value);
+
+    const updatedPost = await PostDescription.findByIdAndUpdate(id, post, { new: true });
+
+    res.json(updatedPost);
+};
 
 export default router;

@@ -57,16 +57,17 @@ const Form = ({ currentID, setCurrentId }) => {
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
-        <input
+        <textarea
           type="text"
           placeholder="Description"
           name="Description"
-          className="input_"
+          className="input_ input__desc"
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
-        />
+        >
+        </textarea>
         <input
           type="text"
           placeholder="tags"

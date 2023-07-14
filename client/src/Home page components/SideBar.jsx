@@ -32,7 +32,7 @@ const SideBar = () => {
           }}
           >
             <NavIcon>
-              <Link to={"/"}>
+              <Link to={"/posts"}>
                 <SidebarLink Icon={HomeIcon} />
               </Link>
             </NavIcon>

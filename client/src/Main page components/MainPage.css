@@ -171,6 +171,7 @@
   padding: 5px 10px;
   outline: none;
 }
+
 .input_::placeholder {
   color: #242424;
 }

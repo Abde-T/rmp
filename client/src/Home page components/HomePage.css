@@ -264,9 +264,25 @@
   flex-direction: column;
   gap: 0.25rem;
 }
-
+.loading{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  filter: brightness(0);
+}
 .login-form > input {
   margin-bottom: 0.5rem;
+}
+.projects__container{
+  width: 100%;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .auth__container {
   width: 100%;
@@ -443,6 +459,7 @@
   align-items: flex-end;
   max-width: 1440px;
   width: 100%;
+  margin-top: 150px;
 }
 .card_ {
   --gray: rgba(229, 231, 235, 1);
@@ -579,13 +596,22 @@
   border-radius: 50%;
   box-shadow: 1.5px 1.5px 0 0px #adadad;
 }
+
+.like_{
+  color: #0e79aa71;
+}
+.button__div{
+  border: 1px solid black;
+}
+
 .like_button{
   border: none;
   display: flex;
   align-items: center;
   justify-content: start;
   font-weight: 400;
-  letter-spacing: 2px;
+  width: 100%;
+  letter-spacing: 1px;
   font-family: "Glitch Goblin", sans-serif;
   color: rgb(0, 110, 255);
   cursor: pointer;
@@ -676,7 +702,7 @@
 
 .cardd {
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 250px;
   width: 100%;
   height: 100%;
   box-shadow: 4px 4px 0px rgba(124, 124, 124, 0.658);
@@ -695,6 +721,8 @@
   width: 100%;
   display: flex;
   align-items: center;
+  position: relative;
+
 }
 
 .imge .UserName {
@@ -715,34 +743,36 @@
   height: 100%;
   border-radius: 5px;
   border-color: #e6e6e7;
-  line-height: 1.5;
+  line-height: 2;
   padding: 2px;
 }
 .Id p:nth-child(1){
-  color: #000000;
+  color: #242424;
   font-weight: 600;
   font-size: 22px;
+  cursor: pointer;
+  transition: all 1s;
+}
+.Id p:nth-child(1):hover{
+  background-color: #24242427;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 .Id p:nth-child(2){
-  color: #242424;
+  color: #242424be;
   font-weight: 600;
   font-size: 20px;
 }
 
 .Id p:nth-child(3){
-  color: #242424bb;
+  color: #2424248a;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 15px;
+  margin-top: 20px;
 }
 
 .Id p:nth-child(4){
-  color: #24242480;
-  font-weight: 600;
-  font-size: 14px;
-  text-align: end;
-}
-.Id p:nth-child(5){
   color: #24242480;
   font-weight: 600;
   font-size: 14px;
@@ -752,7 +782,7 @@
 .imge button {
   background-color: #e6e6e7;
   padding: 2px;
-  width: 100px;
+  width: 220px;
   margin: 0 10px;
 }
 .Description {
@@ -761,28 +791,67 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
 }
 .dropMenu__button{
   position: absolute;
-  top: 0;
+  top: 0px;
   right: 0;
 }
 .card__image {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   width: 100%;
+  cursor: default;
 }
 .cardd:hover {
   overflow: visible;
 }
 .card__image:hover {
   transform: scale(0.99);
-  cursor: pointer;
 }
 .card__image:active {
   transform:scale(0.97);
   box-shadow: none;
+}
+.creatorPosts__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.creatorPosts__banner{
+  width: 100%;
+  height: 250px;
+}
+.creatorPosts_{
+  display: flex;
+  justify-content: space-around;
+  width: 25%;
+
+}
+.creatorPosts__details{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.creatorPosts__details h1{
+  font-family: "Glitch Goblin", sans-serif;
+  color: #242424;
+  font-size: 50px;
+}
+
+.creatorPosts__wrapper{
+  max-width: 1600px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
 }
 .post__container{
   width: 100%;
@@ -793,12 +862,12 @@
 }
 .post__wrapper{
   max-width: 1600px;
+  width: 100%;
   margin-top: 150px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 4px 4px 0px 2px #242424;
-  border: 2px solid #242424;
+  box-shadow: 9px 15px 0px 0px #000000f8;
+  border: 1px solid #242424;
   border-radius: 5px;
 }
 .post__image--wrapper{
@@ -806,7 +875,6 @@
 }
 .post__image{
   width: 100%;
-  height: 100%;
   border-radius: 5px;
 }
 .post__details{
@@ -830,6 +898,7 @@
   color: #242424;
   font-weight: 600;
   font-size: 30px;
+  word-break: break-all;
 }
 .post__details p:nth-child(4){ 
   color: #242424d2;
@@ -843,14 +912,34 @@
 .post__details span{
   font-family: "Glitch Goblin", sans-serif;
   font-size: 20px;
+  color: #0e79aa;
+}
+.comments__container{
+  display: flex;
+  justify-content: space-between;
+}
+.comments__wrapper {
+  color: #242424;
+}
+.comments__wrapper a{
+  font-size: 20px;
+  color: #0e79aa;
+}
+.comment__field{
+  width: 50%;
 }
 .recommendedPosts{
-  margin-top: 50px;
+  margin: 50px 0;
   max-width: 1600px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start
+  align-items: flex-start;
+}
+.recommendedPosts__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
 .recommendedPost{
   border: 1px solid black;
@@ -858,10 +947,12 @@
   border: 2px solid #242424;
   border-radius: 5px;
   cursor: pointer;
-  width: 40%;
+  width: 300px;
+  height: 100%;
   line-height: 1.5;
   padding: 10px;
-  margin-top: 20px;
+  margin: 20px 20px 0 0;
+
 }
 .recommendedPosts h1{
   font-family: "Glitch Goblin", sans-serif;
@@ -892,7 +983,7 @@
 }
 
 .recommendedPost img {
-  margin: 15px 0 -10px 0;
+  margin: 15px 0 0px 0;
   border-radius: 5px;
   width: 100%;
 }

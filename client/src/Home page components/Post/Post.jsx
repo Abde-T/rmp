@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 import { likePost, deletePost } from "../../actions/posts";
@@ -15,35 +15,37 @@ import Form from "../form/Form";
 import { useNavigate } from "react-router-dom";
 
 const Post = ({ currentID, post, setCurrentId }) => {
-  const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const [likes, setLikes] = useState(post?.likes);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const userId = user?.result.googleId || user?.result?._id;
+  const hasLikedPost = post?.likes?.find((like) => like === userId);
+ 
+  const handleLike = async () => {
+    dispatch(likePost(post._id));
+
+    if (hasLikedPost) {
+      setLikes(post.likes.filter((id) => id !== userId));
+    } else {
+      setLikes([...post.likes, userId]);
+    }
+  };
 
   const Likes = () => {
-    if (post?.likes?.length > 0) {
-      return post.likes.find(
-        (like) => like === (user?.result?.googleId || user?.result?._id)
-      ) ? (
-        <>
-          <ThumbUpAltIcon fontSize="small" className="like"/>
-          &nbsp;
-          {post.likes.length > 2
-            ? `You and ${post.likes.length - 1} others`
-            : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
-        </>
-      ) : (
-        <>
-          <ThumbUpOffAltIcon fontSize="small" className="like"/>
-          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
-        </>
-      );
+    if (likes?.length > 0) {
+      return likes.find((like) => like === userId)
+        ? (
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
+        ) : (
+          <><ThumbUpOffAltIcon fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
+        );
     }
-    return (
-      <>
-        <ThumbUpOffAltIcon fontSize="small" />
-        &nbsp;Like
-      </>
-    );
+
+    return <><ThumbUpOffAltIcon fontSize="small" className="like_"/>&nbsp;Like</>;
   };
+
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -58,12 +60,12 @@ const Post = ({ currentID, post, setCurrentId }) => {
   const HandleOpen = () => setOpen(true);
   const HandleClose = () => setOpen(false);
 
-  const navigate = useNavigate()
-  const openPost = ()=>navigate(`/posts/${post._id}`)
+
+  const openPost = (e)=>navigate(`/posts/${post._id}`)
   
   return (
-    <div className="cardd" key={post.id}>
-      <ButtonBase className="card__button" onClick={openPost}>
+    <div className="cardd" >
+      <ButtonBase className="card__button" >
       <div className="Description">
         <img
           className="card__image"
@@ -130,9 +132,10 @@ const Post = ({ currentID, post, setCurrentId }) => {
               <MenuItem>
                 <button
                   className="button-confirm delete__button"
-                  onClick={() => {
+                  onClick={(e) => {
                     setCurrentId(post._id);
                     HandleOpen();
+                    e.stopPropagation();
                   }}
                 >
                   <UpdateIcon className="update__ico" /> update
@@ -150,16 +153,15 @@ const Post = ({ currentID, post, setCurrentId }) => {
       </ButtonBase>
       <div className="imge">
         <div className="Id">
-          <p> {post.title} </p>
-          <p> {post.message} </p>
+          <p onClick={openPost}> {post.title} </p>
           <p className="UserName"> {post.name} </p>
           <p>{moment(post.createdAt).fromNow()}</p>
           <p>{post.tags.map((tag) => `#${tag} `)}</p>
           <button
-            onClick={() => dispatch(likePost(post._id))}
+            onClick={handleLike}
             disabled={!user?.result}
             className="like_button"
-          >
+            >
             <Likes />
           </button>
         </div>
