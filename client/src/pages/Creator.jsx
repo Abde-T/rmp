@@ -31,13 +31,6 @@ const Creator = ({ currentID, setCurrentId }) => {
       <SideBar />
       <div className="creatorPosts__container">
         <div className="creatorPosts__details">
-          <img
-            className="creatorPosts__banner"
-            src={
-              "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
-            }
-            alt=""
-          />
           <div className="creatorPosts_">
             <Avatar
               className="user__icon"
@@ -50,7 +43,10 @@ const Creator = ({ currentID, setCurrentId }) => {
             >
               {name.charAt(0)}
             </Avatar>
+            <div className="creator_credentials">
             <h1>{name}</h1>
+            <p>@{name}</p>
+            </div>
           </div>
         </div>
         {isLoading ? (

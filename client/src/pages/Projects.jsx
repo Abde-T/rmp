@@ -17,6 +17,9 @@ const Projects = () => {
   const [currentID, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
+  console.log(posts);
+
+
   useEffect(() => {
     dispatch(getAllPosts());
   }, [currentID, dispatch]);

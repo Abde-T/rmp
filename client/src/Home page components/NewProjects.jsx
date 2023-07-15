@@ -7,48 +7,46 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 
+
 const NewProjects = ({ currentID, setCurrentId }) => {
-  const {posts, isLoading} = useSelector((state) => state.posts);
-  const newPosts = posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const { posts, isLoading } = useSelector((state) => state.posts);
+  const newPosts = posts.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
+  const renderLoadingStates = () =>
+  new Array(4).fill(0).map((_, index) => <CardLoadingstate key={index} />);
   
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          filter: "invert()",
-          fontSize: "30px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          scale: "1.9",
-        }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          filter: "invert()",
-          fontSize: "30px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          scale: "1.9",
-        }}
-        onClick={onClick}
-      />
-    );
-  }
-
+  const SampleNextArrow = ({ style, onClick }) => (
+    <div
+      style={{
+        ...style,
+        filter: "invert()",
+        fontSize: "30px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        scale: "1.9",
+      }}
+      onClick={onClick}
+    />
+  );
+  
+  const SamplePrevArrow = ({ style, onClick }) => (
+    <div
+      style={{
+        ...style,
+        filter: "invert()",
+        fontSize: "30px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        scale: "1.9",
+      }}
+      onClick={onClick}
+    />
+  );
+  
   const settings = {
     dots: false,
     autoplay: false,
@@ -96,33 +94,28 @@ const NewProjects = ({ currentID, setCurrentId }) => {
       },
     ],
   };
-
-
+  
   return (
     <>
       <div className="newContainer">
         <div className="card__wrapper">
           <h1>Latest Projects</h1>
-          <Link to={'/posts/projects'}>
-          <p>see more</p>
+          <Link to={"/posts/projects?page=1"}>
+            <p>see more</p>
           </Link>
         </div>
         <div className="cards">
-        {!posts.length >0 ? (
-            new Array(4)
-              .fill(0)
-              .map((_, index) => <CardLoadingstate key={index} />)
+          {!posts.length > 0 ? (
+            renderLoadingStates()
           ) : (
-            <Slider {...settings} key={Date.now()} className="flex ">
-              {newPosts.map((post) => (
-                 <div  key={post._id}>
+            <Slider {...settings} key="slider" className="flex ">
+              {newPosts.map((post, index) => (
                 <Post
                   currentID={currentID}
                   post={post}
-                  isLoading={isLoading}
                   setCurrentId={setCurrentId}
-                  />
-                </div>
+                  key={index}
+                />
               ))}
             </Slider>
           )}

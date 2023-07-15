@@ -4,6 +4,7 @@ import Featured from "../Home page components/Featured";
 import Nav from "../Home page components/Nav";
 import Developers from "../Home page components/Developers";
 import NewProjects from "../Home page components/NewProjects";
+import RandomProject from "../Home page components/RandomPosts";
 
 function HomePage({ currentID, setCurrentId }) {
   
@@ -16,6 +17,7 @@ function HomePage({ currentID, setCurrentId }) {
           <Featured currentID={currentID} setCurrentId={setCurrentId} />
           <Developers />
           <NewProjects currentID={currentID} setCurrentId={setCurrentId} />
+          <RandomProject currentID={currentID} setCurrentId={setCurrentId}/>
       </div>
     </>
   );

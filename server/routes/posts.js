@@ -10,7 +10,7 @@ router.get('/creator', getPostsByCreator);
 router.get('/projects/search', getPostsBySearch);
 router.get('/', responseTimeMiddleware, getPosts);
 router.get('/projects', getAllPosts);
-router.get('/:id', getPost);
+router.get('/:id',responseTimeMiddleware, getPost);
 
 router.post('/', auth, createPost);
 router.patch('/:id', auth, updatePost);

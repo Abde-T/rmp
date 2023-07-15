@@ -14,6 +14,8 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
+  
+  console.log(post);
 
   useEffect(() => {
     dispatch(getPost(id));
@@ -44,7 +46,6 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   }
 
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
-  console.log(post);
 
   return (
     <>
