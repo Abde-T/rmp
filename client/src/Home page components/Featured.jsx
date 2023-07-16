@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 const Featured = ({ currentID, setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
   const Posts = posts.sort((a, b) => b.comments.length - a.comments.length);
-  console.log(posts);
+  console.log('post:', posts);
+  
 
   const renderLoadingStates = () =>
   new Array(4).fill(0).map((_, index) => <CardLoadingstate key={index} />);
@@ -104,11 +105,11 @@ const Featured = ({ currentID, setCurrentId }) => {
           </Link>
         </div>
         <div className="cards">
-          {!posts.length > 0 ? (
+          {!isLoading  ? (
             renderLoadingStates()
           ) : (
             <Slider {...settings} className="flex ">
-              {Posts.map((post, index) => (
+              {Posts?.map((post, index) => (
                 <Post
                   currentID={currentID}
                   post={post}

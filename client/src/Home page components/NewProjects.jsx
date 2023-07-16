@@ -105,11 +105,11 @@ const NewProjects = ({ currentID, setCurrentId }) => {
           </Link>
         </div>
         <div className="cards">
-          {!posts.length > 0 ? (
+          {isLoading ? (
             renderLoadingStates()
           ) : (
             <Slider {...settings} key="slider" className="flex ">
-              {newPosts.map((post, index) => (
+              {newPosts?.map((post, index) => (
                 <Post
                   currentID={currentID}
                   post={post}

@@ -14,52 +14,26 @@ import Modal from "@mui/material/Modal";
 import Form from "../form/Form";
 import { useNavigate } from "react-router-dom";
 
-const Likes = ({ likes, userId }) => {
-  if (!likes || !Array.isArray(likes) || likes.length === 0) {
-    return null;
+const Likes = ({post }) => {
+  if (post?.likes?.length > 0) {
+    return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
+      ? (
+        <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
+      ) : (
+        <><ThumbUpOffAltIcon fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+      );
   }
 
-  const likedByUser = likes.includes(userId);
-
-  return (
-    <>
-      {likedByUser ? (
-        <>
-          <ThumbUpAltIcon fontSize="small" />
-          &nbsp;
-          {likes.length > 2
-            ? `You and ${likes.length - 1} others`
-            : `${likes.length} like${likes.length !== 1 ? "s" : ""}`}
-        </>
-      ) : (
-        <>
-          <ThumbUpOffAltIcon fontSize="small" />
-          &nbsp;{likes.length} {likes.length === 1 ? "Like" : "Likes"}
-        </>
-      )}
-    </>
-  );
+  return <><ThumbUpOffAltIcon fontSize="small" />&nbsp;Like</>;
 };
 
 const Post = ({ currentID, post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const userId = user?.result.googleId || user?.result?._id;
 
-  const [likes, setLikes] = useState(post?.likes);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const hasLikedPost = post?.likes?.includes(userId);
-
-  const handleLike = async () => {
-    dispatch(likePost(post._id));
-
-    if (hasLikedPost) {
-      setLikes((prevLikes) => prevLikes.filter((id) => id !== userId));
-    } else {
-      setLikes((prevLikes) => [...prevLikes, userId]);
-    }
-  };
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -169,15 +143,14 @@ const Post = ({ currentID, post, setCurrentId }) => {
           <p onClick={openPost}> {post.title} </p>
           <p className="UserName"> {post.name} </p>
           <p>{moment(post.createdAt).fromNow()}</p>
-          {Array.isArray(post.tags) && (
-            <p>{post.tags.map((tag) => `#${tag} `)}</p>
-          )}
+          <p> {post?.tags?.map((tag) => `#${tag} `)}</p>
+          <p>{post.message}...</p>
           <button
-            onClick={handleLike}
             disabled={!user?.result}
             className="like_button"
+            onClick={() => dispatch(likePost(post._id))}
           >
-            <Likes likes={likes} userId={userId} />
+            <Likes post={post}/>
           </button>
         </div>
       </div>

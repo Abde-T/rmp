@@ -1,7 +1,6 @@
 import express from 'express'
 import { getPosts, getPostsBySearch, getAllPosts, getPostsByCreator, getPost, createPost, updatePost, likePost, commentPost, deletePost } from '../controllers/posts.js';
 import auth from '../middleware/auth.js';
-import cacheMiddleware from '../middleware/cacheMiddleware .js';
 import responseTimeMiddleware from '../middleware/responseTimeMiddleware.js'
 
 const router = express.Router()

@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import connectDB from "./mongodb/connect.js";
+import cacheMiddleware from './middleware/cacheMiddleware.js';
 
 const app = express();
 dotenv.config();
@@ -13,6 +14,7 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors());
+app.use(cacheMiddleware())
 
 app.use("/posts", postRoutes);
 app.use("/user", userRoutes);

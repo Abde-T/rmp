@@ -284,6 +284,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+}
+.cards- {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  max-width: 1440px;
+  width: 100%;
+  margin-top: 150px;
+  columns: 5;
+}
+
+.grid_layout{
+  display: flex;
 }
 .auth__container {
   width: 100%;
@@ -726,6 +741,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  break-inside: avoid;
 }
 
 

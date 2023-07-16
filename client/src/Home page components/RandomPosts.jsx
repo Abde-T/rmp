@@ -20,7 +20,7 @@ const RandomProject = ({ currentID, setCurrentId }) => {
     <>
       <div className="Random-project__container">
         <div className="cards-">
-          {isLoading
+          {!isLoading
             ? new Array(8)
                 .fill(0)
                 .map((_, index) => <CardLoadingstate key={index} />)
