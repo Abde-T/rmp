@@ -196,15 +196,15 @@ const Nav = ({ currentID, setCurrentId }) => {
               </MenuItem>
               <Divider />
               <MenuItem>
-                <button className="button-confirm none" onClick={HandleOpen}>
+                <div className="div__button button-confirm none" onClick={HandleOpen}>
                   Upload
-                </button>
+                </div >
               </MenuItem>
               <Divider />
               <MenuItem>
-                <button className="button-confirm" onClick={logout}>
+                <div className="div__button button-confirm" onClick={logout}>
                   Logout
-                </button>
+                </div>
               </MenuItem>
             </Menu>
           </div>

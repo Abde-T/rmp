@@ -92,7 +92,7 @@ const SideBar = () => {
           {new Array(4).fill(0).map((_, index) =>(
             <NavItem eventKey="dev" key={index}>
               <NavIcon>
-                <button className=" dev__card" data-dropdown-button></button>
+                <div className=" dev__card" data-dropdown-button></div>
               </NavIcon>
               <NavText
                 style={{

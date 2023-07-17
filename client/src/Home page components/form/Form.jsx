@@ -17,6 +17,7 @@ const Form = ({ currentID, setCurrentId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!post?.title) clear();
     if (post) setPostData(post);
   }, [post]);
 

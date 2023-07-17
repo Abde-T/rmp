@@ -14,22 +14,22 @@ import Modal from "@mui/material/Modal";
 import Form from "../form/Form";
 import { useNavigate } from "react-router-dom";
 
-const Likes = ({post }) => {
-  if (post?.likes?.length > 0) {
-    return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
-      ? (
-        <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
-      ) : (
-        <><ThumbUpOffAltIcon fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
-      );
-  }
-
-  return <><ThumbUpOffAltIcon fontSize="small" />&nbsp;Like</>;
-};
 
 const Post = ({ currentID, post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const userId = user?.result.googleId || user?.result?._id;
+  const [likes, setLikes] = useState(post?.likes);
+  const hasLikedPost = post.likes?.find((like) => like === userId);
+
+  const handleLike = async () => {
+    dispatch(likePost(post._id));
+
+    if (hasLikedPost) {
+      setLikes(post.likes.filter((id) => id !== userId));
+    } else {
+      setLikes([...post.likes, userId]);
+    }
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -44,11 +44,25 @@ const Post = ({ currentID, post, setCurrentId }) => {
     setAnchorEl(null);
   };
 
+  const Likes = () => {
+    if (likes?.length > 0) {
+      return likes.find((like) => like === userId)
+        ? (
+          <><ThumbUpAltIcon fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
+        ) : (
+          <><ThumbUpOffAltIcon fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
+        );
+    }
+
+    return <><ThumbUpOffAltIcon fontSize="small" />&nbsp;Like</>;
+  };
+
+  const openPost = () => navigate(`/posts/${post._id}`);
+
   const [Open, setOpen] = useState(false);
   const HandleOpen = () => setOpen(true);
   const HandleClose = () => setOpen(false);
 
-  const openPost = () => navigate(`/posts/${post._id}`);
 
   return (
     <div className="cardd">
@@ -148,9 +162,9 @@ const Post = ({ currentID, post, setCurrentId }) => {
           <button
             disabled={!user?.result}
             className="like_button"
-            onClick={() => dispatch(likePost(post._id))}
+            onClick={handleLike}
           >
-            <Likes post={post}/>
+            <Likes />
           </button>
         </div>
       </div>

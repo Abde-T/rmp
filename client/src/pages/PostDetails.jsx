@@ -24,7 +24,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   useEffect(() => {
     if (post) {
       dispatch(
-        getPostsBySearch({ search: "none", tags: post?.tags?.join(",") })
+        getPostsBySearch({ search: "none", tags: post?.tags.join(",") })
       );
     }
   }, [post]);
@@ -46,7 +46,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   }
 
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
-
+  console.log(recommendedPosts);
   return (
     <>
       <Nav currentID={currentID} setCurrentId={setCurrentId}/>
@@ -79,7 +79,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
             />
           </div>
         </div>
-        {recommendedPosts.length && (
+        {recommendedPosts?.length && (
           <div className="recommendedPosts">
             <h1 variant="h5">You might also like:</h1>
             <Divider />

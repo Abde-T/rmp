@@ -196,6 +196,7 @@
   width: 200px;
 }
 .dev__card {
+  border: 1px solid black;
   width: 50px;
   height: 50px;
   background: linear-gradient(
@@ -328,6 +329,11 @@
   font-family: "Glitch Goblin", sans-serif;
   max-width: 600px;
   width: 100%;
+}
+.div__button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 .button-confirm {
     width: 50%;

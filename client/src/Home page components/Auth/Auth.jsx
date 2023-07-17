@@ -39,6 +39,7 @@ const Auth = () => {
     }
   };
   const switchMode = () => {
+    setForm(initialState);
     setIsSignUp((prevIsSignUp) => !prevIsSignUp);
     setShowPassword(false);
   };

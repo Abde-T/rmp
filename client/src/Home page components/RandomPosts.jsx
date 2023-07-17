@@ -16,20 +16,22 @@ const RandomProject = ({ currentID, setCurrentId }) => {
   }
   const shuffledPosts = shuffleArray(posts);
 
+  const renderLoadingStates = () =>
+  new Array(8).fill(0).map((_, index) => <CardLoadingstate key={index} />);
+  
+
   return (
     <>
       <div className="Random-project__container">
         <div className="cards-">
-          {!isLoading
-            ? new Array(8)
-                .fill(0)
-                .map((_, index) => <CardLoadingstate key={index} />)
-            : shuffledPosts.map((post) => (
+          {isLoading
+            ?  renderLoadingStates()
+            : shuffledPosts.slice(0,8).map((post, index) => (
                 <Post
                   currentID={currentID}
                   post={post}
                   setCurrentId={setCurrentId}
-                  key={post._id}
+                  key={index}
                 />
               ))}
         </div>
