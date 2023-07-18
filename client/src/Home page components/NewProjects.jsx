@@ -64,20 +64,12 @@ const NewProjects = ({ currentID, setCurrentId }) => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1000,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -85,7 +77,7 @@ const NewProjects = ({ currentID, setCurrentId }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

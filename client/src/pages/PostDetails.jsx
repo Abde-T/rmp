@@ -8,13 +8,15 @@ import { CircularProgress, Divider } from "@mui/material";
 import Nav from "../Home page components/Nav";
 import SideBar from "../Home page components/SideBar";
 import CommentSection from "../Home page components/CommentSection";
-
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 const PostDetails = ({ currentID, setCurrentId }) => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  
+
   console.log(post);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   if (isLoading) {
     return (
       <>
-        <Nav currentID={currentID} setCurrentId={setCurrentId}/>
+        <Nav currentID={currentID} setCurrentId={setCurrentId} />
         <SideBar />
         <div className="loading">
           <CircularProgress />
@@ -49,7 +51,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   console.log(recommendedPosts);
   return (
     <>
-      <Nav currentID={currentID} setCurrentId={setCurrentId}/>
+      <Nav currentID={currentID} setCurrentId={setCurrentId} />
       <SideBar />
       <div className="post__container">
         <div className="post__wrapper">
@@ -63,6 +65,17 @@ const PostDetails = ({ currentID, setCurrentId }) => {
                 <span>{` ${post.name}`}</span>
               </Link>
             </p>
+            <div className="posts__links">
+              <Link to={post?.linkedin} target="_blank">
+                <LinkedInIcon className="post__icon" />
+              </Link>
+              <Link to={post?.gitHub} target="_blank">
+                <GitHubIcon className="post__icon"/>
+              </Link>
+              <Link to={post?.website} target="_blank">
+                <OpenInNewIcon className="post__icon"/>
+              </Link>
+            </div>
             <p>{moment(post.createdAt).fromNow()}</p>
             <Divider style={{ margin: "20px 0" }} />
             <CommentSection post={post} />
@@ -77,6 +90,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
               }
               alt={post.title}
             />
+            
           </div>
         </div>
         {recommendedPosts?.length && (
@@ -94,7 +108,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
                     <p>{post?.tags?.map((tag) => `#${tag} `)}</p>
                     <p variant="h6">{title}</p>
                     <p variant="subtitle2">{name}</p>
-                    <p variant="subtitle1">Likes: {likes.length}</p>
+                    <p variant="subtitle1">Likes: {likes?.length}</p>
                     <img src={selectedFile} />
                   </div>
                 )

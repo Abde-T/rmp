@@ -27,6 +27,7 @@ const Featured = ({ currentID, setCurrentId }) => {
         alignItems: "center",
         justifyContent: "center",
         scale: "1.9",
+        border: "1px solid black",
       }}
       onClick={onClick}
     />
@@ -55,41 +56,30 @@ const Featured = ({ currentID, setCurrentId }) => {
     speed: 1500,
     autoplaySpeed: 10,
     slidesToShow: 5,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
     initialSlide: 0,
     draggable: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 2,
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 2,
         },
       },
     ],

@@ -30,6 +30,7 @@ const Creator = ({ currentID, setCurrentId }) => {
       <Nav currentID={currentID} setCurrentId={setCurrentId} />
       <SideBar />
       <div className="creatorPosts__container">
+      <div className="creatorPosts__wrapper">
         <div className="creatorPosts__details">
           <div className="creatorPosts_">
             <Avatar
@@ -64,6 +65,7 @@ const Creator = ({ currentID, setCurrentId }) => {
             ))}
           </div>
         )}
+      </div>
       </div>
     </>
   );

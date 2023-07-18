@@ -15,7 +15,7 @@ function HomePage({ currentID, setCurrentId }) {
       <Nav currentID={currentID} setCurrentId={setCurrentId} />
       <div className="HomePage__container">
           <Featured currentID={currentID} setCurrentId={setCurrentId} />
-          <Developers />
+          {/* <Developers /> */}
           <NewProjects currentID={currentID} setCurrentId={setCurrentId} />
           <RandomProject currentID={currentID} setCurrentId={setCurrentId}/>
       </div>

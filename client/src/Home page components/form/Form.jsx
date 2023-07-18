@@ -3,16 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import { createPost, updatePost } from "../../actions/posts";
 import { useNavigate } from "react-router-dom";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import AddLinkIcon from "@mui/icons-material/AddLink";
 
 const Form = ({ currentID, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
-    tags: "",
+    linkedin: "",
+    gitHub: "",
+    website: "",
+    tags: [],
     selectedFile: "",
   });
-  const navigate = useNavigate()
-  const post = useSelector((state) => (currentID ? state.posts.posts.find((message) => message._id === currentID) : null));
+  const navigate = useNavigate();
+  const post = useSelector((state) =>
+    currentID
+      ? state.posts.posts.find((message) => message._id === currentID)
+      : null
+  );
 
   const dispatch = useDispatch();
 
@@ -26,7 +36,10 @@ const Form = ({ currentID, setCurrentId }) => {
     setPostData({
       title: "",
       message: "",
-      tags: "",
+      linkedin: "",
+      gitHub: "",
+      website: "",
+      tags: [],
       selectedFile: "",
     });
   };
@@ -49,7 +62,9 @@ const Form = ({ currentID, setCurrentId }) => {
   return (
     <>
       <form className="nav__form" onSubmit={handleSubmit} autoComplete="off">
-        <div name="title">{currentID ? `Editing "${post.title}"` : 'Upload project' }</div>
+        <div name="title">
+          {currentID ? `Editing "${post.title}"` : "Upload project"}
+        </div>
         <input
           type="text"
           placeholder="Project title"
@@ -67,8 +82,49 @@ const Form = ({ currentID, setCurrentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
-        >
-        </textarea>
+        ></textarea>
+
+        <div className="icon__inputs">
+          <div className="icon__box">
+            <LinkedInIcon />
+            <input
+              type="text"
+              placeholder="LinkedIn"
+              name="LinkedIn"
+              className="icon__input"
+              value={postData.linkedin}
+              onChange={(e) =>
+                setPostData({ ...postData, linkedin: e.target.value })
+              }
+            />
+          </div>
+          <div className="icon__box">
+            <GitHubIcon />
+            <input
+              type="text"
+              placeholder="GitHub"
+              name="gitHub"
+              className="icon__input"
+              value={postData.gitHub}
+              onChange={(e) =>
+                setPostData({ ...postData, gitHub: e.target.value })
+              }
+            />{" "}
+          </div>
+          <div className="icon__box">
+            <AddLinkIcon />
+            <input
+              type="text"
+              placeholder="Website"
+              name="website"
+              className="icon__input"
+              value={postData.website}
+              onChange={(e) =>
+                setPostData({ ...postData, website: e.target.value })
+              }
+            />
+          </div>
+        </div>
         <input
           type="text"
           placeholder="tags"

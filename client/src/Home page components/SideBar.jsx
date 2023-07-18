@@ -5,7 +5,6 @@ import "./HomePage.css";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 const SideBar = () => {
-  const array1 = [1, 2, 3, 4, 5, 6];
   return (
     <div className="SideBar__container">
 

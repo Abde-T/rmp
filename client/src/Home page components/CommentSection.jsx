@@ -12,18 +12,19 @@ const CommentSection = ({ post }) => {
   const [comments, setComments] = useState(post?.comments);
   const commentsRef = useRef();
 
-  const handleComment = () => {
-    const newComments = dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
+  const handleComment = async () => {
+    const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
     setComment('');
     setComments(newComments);
-    commentsRef.current.scrollIntoView({ behavior: 'smooth' });
+    commentsRef.current.scrollIntoView();
   };
 
   return (
     <div>
       <div className='comments__container'>
         <div className='comments__wrapper'>
-          <h2 >Comments</h2>
+          <h2 >Comments</h2> 
+          <div className="comnts">
           {comments?.map((c, i) => (
             <p key={i} >
               <Link to={`/creators/${post.name}`}>
@@ -32,7 +33,8 @@ const CommentSection = ({ post }) => {
               {c.split(':')[1]}
             </p>
           ))}
-          <div ref={commentsRef} />
+          <div ref={commentsRef}/>
+          </div>
         </div>
         {user?.result?.name && (
           <div className='comment__field'>

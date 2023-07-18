@@ -70,6 +70,7 @@ const Post = ({ currentID, post, setCurrentId }) => {
         <div className="Description">
           <img
             className="card__image"
+            onClick={openPost}
             src={
               post.selectedFile ||
               "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
@@ -123,15 +124,15 @@ const Post = ({ currentID, post, setCurrentId }) => {
                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
               >
                 <MenuItem>
-                  <button
+                  <div
                     className="button-confirm delete__button"
                     onClick={() => dispatch(deletePost(post._id))}
                   >
                     <DeleteForeverIcon className="delet__ico" /> Delete
-                  </button>
+                  </div>
                 </MenuItem>
                 <MenuItem>
-                  <button
+                  <div
                     className="button-confirm delete__button"
                     onClick={(e) => {
                       setCurrentId(post._id);
@@ -140,7 +141,7 @@ const Post = ({ currentID, post, setCurrentId }) => {
                     }}
                   >
                     <UpdateIcon className="update__ico" /> update
-                  </button>
+                  </div>
                   <Modal open={Open} onClose={HandleClose}>
                     <div className="upload__modal">
                       <Form currentID={currentID} setCurrentId={setCurrentId} />
@@ -154,11 +155,10 @@ const Post = ({ currentID, post, setCurrentId }) => {
       </ButtonBase>
       <div className="imge">
         <div className="Id">
-          <p onClick={openPost}> {post.title} </p>
+          <p > {post.title} </p>
           <p className="UserName"> {post.name} </p>
           <p>{moment(post.createdAt).fromNow()}</p>
-          <p> {post?.tags?.map((tag) => `#${tag} `)}</p>
-          <p>{post.message}...</p>
+          <p> {post.tags?.map((tag) => `#${tag} `)}</p>
           <button
             disabled={!user?.result}
             className="like_button"
