@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Modal from "@mui/material/Modal";
 import { MuiChipsInput } from "mui-chips-input";
 import { getPostsBySearch } from "../actions/posts";
+import PersonIcon from '@mui/icons-material/Person';
 
 const Nav = ({ currentID, setCurrentId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -188,17 +189,13 @@ const Nav = ({ currentID, setCurrentId }) => {
             >
               <MenuItem>
                 <Link to={`/creators/${user?.result.name}`}>
-                  <p className="user__name">{user?.result.name}</p>
+                  <div className="user__name"> <PersonIcon/> Profile </div>
                 </Link>
               </MenuItem>
               <MenuItem>
-                <p className="user__name">{user?.result.Username}</p>
-              </MenuItem>
-              <Divider />
-              <MenuItem>
-                <div className="div__button button-confirm none" onClick={HandleOpen}>
+                <button className="button-confirm none" onClick={HandleOpen}>
                   Upload
-                </div >
+                </button >
               </MenuItem>
               <Divider />
               <MenuItem>

@@ -53,7 +53,7 @@ const Creator = ({ currentID, setCurrentId }) => {
         {isLoading ? (
           <CircularProgress />
         ) : (
-          <div className="creatorPosts__wrapper">
+          <div className="creatorPost__wrapper">
             {posts?.map((post) => (
               <div key={post._id}>
                 <Post 

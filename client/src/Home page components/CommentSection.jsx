@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { commentPost } from '../actions/posts';
 import { Button, TextField, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const CommentSection = ({ post }) => {
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -27,9 +25,7 @@ const CommentSection = ({ post }) => {
           <div className="comnts">
           {comments?.map((c, i) => (
             <p key={i} >
-              <Link to={`/creators/${post.name}`}>
-              {c.split(': ')[0]} : 
-              </Link>
+              <strong>{c.split(': ')[0]} : </strong>
               {c.split(':')[1]}
             </p>
           ))}

@@ -62,6 +62,13 @@ const Featured = ({ currentID, setCurrentId }) => {
 
     responsive: [
       {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
+      {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
@@ -76,7 +83,7 @@ const Featured = ({ currentID, setCurrentId }) => {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 700,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -95,7 +102,7 @@ const Featured = ({ currentID, setCurrentId }) => {
           </Link>
         </div>
         <div className="cards">
-          {isLoading  ? (
+          {!posts?.length > 0  ? (
             renderLoadingStates()
           ) : (
             <Slider {...settings} className="flex ">

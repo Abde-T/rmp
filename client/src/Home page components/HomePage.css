@@ -9,7 +9,7 @@
 }
 
 .HomePage__container {
-  background-color: #e6e6e7;
+  background-color: #e5e5e5;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -461,7 +461,7 @@
 }
 .Random-project__container{
   margin: -100px 0 0 0;
-  max-width: 1400px;
+  max-width: 1800px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -515,22 +515,22 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  max-width: 1440px;
+  max-width: 1640px;
   width: 100%;
   margin-top: 150px;
 }
 .card_ {
-  --gray: rgba(229, 231, 235, 1);
+  --gray: rgba(41, 42, 43, 0.205);
   height: 250px;
   width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   border-radius: 1rem;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.322);
   padding: 10px;
   margin: 20px;
-  box-shadow: 3px 3px 0 1.5px #242424;
+  box-shadow: 3px 3px 0 1.5px #2424244d;
 }
 
 .card-1 {
@@ -641,7 +641,12 @@
 }
 .user__name {
   font-size: 18px;
-  font-family: "Glitch Goblin", sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 90px;
+  color: #242424;
 }
 .user__icon {
   border: 1px solid #adadad;
@@ -873,14 +878,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow-y: scroll;
 }
 .creatorPosts__wrapper{
+  margin: 150px 0 50px 0;
   max-width: 1200px;
-  border: 1px solid black;
-  box-shadow: 4px 4px #242424;
-  padding: 50px
+  width: 100%;
+
+}
+.creatorPost__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
 }
 .creatorPosts_{
   display: flex;
@@ -896,6 +905,7 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  padding: 50px;
 }
 .creatorPosts__details h1{
   font-family: "Glitch Goblin", sans-serif;
@@ -903,15 +913,7 @@
   font-size: 30px;
 }
 
-.creatorPosts__wrapper{
-  max-width: 1400px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
 
-}
 .post__container{
   width: 100%;
   display: flex;
@@ -981,7 +983,6 @@
 .comments__wrapper {
   color: #242424;
   width: 50%;
-  position: relative;
 }
 .comments__wrapper ::-webkit-scrollbar-thumb {
   border-radius: 50px;
@@ -997,10 +998,6 @@
   color: #242424;
   font-size: 18px;
   word-break: break-all;
-}
-.comments__wrapper a{
-  font-size: 20px;
-  color: #0e79aa;
 }
 
 .comment__field{
@@ -1040,19 +1037,19 @@
 .recommendedPost p:nth-child(1) {
   color: #242424;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .recommendedPost p:nth-child(2) {
-  color: #242424a8;
+  color: #242424b0;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .recommendedPost p:nth-child(3) {
-  color: #242424cc;
+  color: #242424b9;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .recommendedPost p:nth-child(4) {
@@ -1129,8 +1126,8 @@
   .cardContainer, .newContainer {
     max-width: 1100px;
   }
-  .creatorPosts__details{
-    max-width: 1100px;
+  .creatorPosts__wrapper{
+    max-width: 1000px;
   }
 
 }
@@ -1144,8 +1141,8 @@
   .cardContainer, .newContainer {
     max-width: 1000px;
   }
-  .creatorPosts__details{
-    max-width: 900px;
+  .creatorPosts__wrapper{
+    max-width: 990px;
   }
  
 }
@@ -1163,8 +1160,11 @@
   .cardContainer, .newContainer {
     max-width: 900px;
   }
-  .creatorPosts__details{
+  .creatorPosts__wrapper{
     max-width: 800px;
+  }
+  .creatorPosts__details{
+    margin-left: -30px;
   }
   .creatorPosts_{
     justify-content: center;
@@ -1194,9 +1194,6 @@
   .cardContainer, .newContainer {
     max-width: 800px;
   }
-  .creatorPosts__details{
-    max-width: 500px;
-  }
 }
 
 
@@ -1212,9 +1209,6 @@
 }
 
 @media (max-width: 550px) {
-  .creatorPosts__details{
-    max-width: 300px;
-  }
   .cardContainer, .newContainer {
     max-width: 390px;
   }
@@ -1289,5 +1283,8 @@
   .flex{
     max-width: 280px;
     width: 100%;
+  }
+  .posts__links{
+    width: 30%;
   }
 }

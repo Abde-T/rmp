@@ -7,7 +7,6 @@ import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 const SideBar = () => {
   return (
     <div className="SideBar__container">
-
       <SideNav
         defaultselected="home"
         className="SideBar__nav"
@@ -64,7 +63,7 @@ const SideBar = () => {
                   color: "#242424",
                 }}
               >
-                Line Chart
+                
               </NavText>
             </NavItem>
             <NavItem eventKey="Messages/barchart">
@@ -74,35 +73,10 @@ const SideBar = () => {
                   color: "#242424",
                 }}
               >
-                Bar Chart
+                
               </NavText>
             </NavItem>
           </NavItem>
-          <NavItem eventKey="Following">
-            <NavText
-              style={{
-                fontFamily: "Glitch Goblin",
-                color: "#242424",
-              }}
-            >
-              Following
-            </NavText>
-          </NavItem>
-          {new Array(4).fill(0).map((_, index) =>(
-            <NavItem eventKey="dev" key={index}>
-              <NavIcon>
-                <div className=" dev__card" data-dropdown-button></div>
-              </NavIcon>
-              <NavText
-                style={{
-                  fontFamily: "Glitch Goblin",
-                  color: "#242424",
-                }}
-              >
-                Dev__Name
-              </NavText>
-            </NavItem>
-          ))}
         </SideNav.Nav>
       </SideNav>
     </div>

@@ -105,8 +105,8 @@ const PostDetails = ({ currentID, setCurrentId }) => {
                     onClick={() => openPost(_id)}
                     key={_id}
                   >
-                    <p>{post?.tags?.map((tag) => `#${tag} `)}</p>
                     <p variant="h6">{title}</p>
+                    <p>{post?.tags?.map((tag) => `#${tag} `)}</p>
                     <p variant="subtitle2">{name}</p>
                     <p variant="subtitle1">Likes: {likes?.length}</p>
                     <img src={selectedFile} />

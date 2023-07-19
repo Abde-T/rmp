@@ -58,9 +58,16 @@ const NewProjects = ({ currentID, setCurrentId }) => {
     slidesToScroll: 2,
     initialSlide: 0,
     draggable: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
     responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+        },
+      },
       {
         breakpoint: 1200,
         settings: {
@@ -77,7 +84,7 @@ const NewProjects = ({ currentID, setCurrentId }) => {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 700,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -97,7 +104,7 @@ const NewProjects = ({ currentID, setCurrentId }) => {
           </Link>
         </div>
         <div className="cards">
-          {isLoading ? (
+          {!posts?.length > 0 ? (
             renderLoadingStates()
           ) : (
             <Slider {...settings} key="slider" className="flex ">

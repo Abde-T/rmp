@@ -443,7 +443,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .landing__phrase,
   .form__phrase,
   .info__phrase{
@@ -499,7 +499,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .landing__wrapper, .details__wrapper, .info__wrapper, .footer__wrapper{
     flex-direction: column;
   }
