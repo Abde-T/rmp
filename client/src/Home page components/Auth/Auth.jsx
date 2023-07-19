@@ -5,7 +5,7 @@ import Input from "./Input";
 import { Button } from "@mui/material";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { useGoogleLogin } from "@react-oauth/google";
-import Icon from "./icon";
+import Icon from "./Icon";
 import { useDispatch } from "react-redux";
 import { AUTH } from "../../constants/actionTypes";
 import { useNavigate } from "react-router-dom";
