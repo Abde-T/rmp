@@ -13,7 +13,11 @@ dotenv.config();
 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods:['POST', 'GET'],
+  credentials: true
+}));
 app.use(cacheMiddleware())
 
 app.use("/posts", postRoutes);
