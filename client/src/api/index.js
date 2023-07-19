@@ -1,7 +1,7 @@
 import axios from "axios";
 
+axios.defaults.withCredentials = true
 const API = axios.create({ baseURL: "https://rmp-api.vercel.app" });
-
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
