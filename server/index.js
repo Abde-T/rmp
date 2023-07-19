@@ -14,7 +14,7 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "https://rmp-abde-t.vercel.app/",
   methods:['POST', 'GET'],
   credentials: true
 }));
