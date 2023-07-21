@@ -9,7 +9,7 @@ import Projects from "./pages/Projects";
 import Creator from "./pages/Creator";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPosts } from "./actions/posts";
+import { getAllPosts, getPosts } from "./actions/posts";
 
 function App() {
   AOS.init();
@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getAllPosts());
   }, [currentID, dispatch]);
 
   return (
