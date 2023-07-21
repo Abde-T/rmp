@@ -102,7 +102,7 @@ const Featured = ({ currentID, setCurrentId }) => {
           </Link>
         </div>
         <div className="cards">
-          {!posts?.length > 0  ? (
+          {isLoading ? (
             renderLoadingStates()
           ) : (
             <Slider {...settings} className="flex ">

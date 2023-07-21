@@ -13,7 +13,7 @@ function useQuery() {
 }
 
 const Projects = () => {
-  const { posts } = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector((state) => state.posts);
   const [currentID, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
@@ -34,20 +34,18 @@ const Projects = () => {
       <SideBar />
       <div className="projects__container">
         <div className="cards-">
-          {!posts?.length > 0
-            ? new Array(8)
+          {isLoading ?(
+             new Array(8)
                 .fill(0)
                 .map((_, index) => <CardLoadingstate key={index} />)
-            : posts.map((post) => (
-                <div className="grid_layout">
+            ):( posts.map((post, index) => (
                   <Post
                     currentID={currentID}
                     post={post}
                     setCurrentId={setCurrentId}
-                    key={post._id}
+                    key={index}
                   />
-                </div>
-              ))}
+              )))}
         </div>
         {!searchQuery && !tags.length && (
           <div className="page">
