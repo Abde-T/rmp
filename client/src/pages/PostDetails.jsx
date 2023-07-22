@@ -66,7 +66,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
               </Link>
             </div>
             </div>
-            <p>{post?.tags?.map((tag) => `#${tag} `)}</p>
+            <p>{post.tags?.map((tag) => `#${tag} `)}</p>
             <p>
               Created by:
               <Link to={`/creators/${post.name}`}>
@@ -98,14 +98,14 @@ const PostDetails = ({ currentID, setCurrentId }) => {
             <Divider />
             <div className="recommendedPosts__wrapper">
               {recommendedPosts.map(
-                ({ title, name, likes, selectedFile, _id }) => (
+                ({ title, name, likes, selectedFile, _id, tags }) => (
                   <div
                     className="recommendedPost"
                     onClick={() => openPost(_id)}
                     key={_id}
                   >
                     <p variant="h6">{title}</p>
-                    <p>{post?.tags?.map((tag) => `#${tag} `)}</p>
+                    <p>{tags?.map((tag) => `#${tag} `)}</p>
                     <p variant="subtitle2">{name}</p>
                     <p variant="subtitle1">Likes: {likes?.length}</p>
                     <img src={selectedFile} />

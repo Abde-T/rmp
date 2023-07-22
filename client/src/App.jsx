@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllPosts());
+    dispatch(getPosts());
   }, [currentID, dispatch]);
 
   return (

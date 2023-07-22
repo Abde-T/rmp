@@ -106,9 +106,12 @@
   left: -5px;
   border: 0;
 }
+.input_tags{
+  width: 48%;
+}
 
 .input {
-  width: calc(100% - 29px);
+  width: 50%;
   height: 100%;
   border: 0;
   border-color: transparent;
@@ -1012,7 +1015,8 @@
 }
 .post__image{
   width: 100%;
-  border-radius: 5px;
+  border-radius: 15px;
+  margin-top: 10px;
 }
 .post__details{
   width: 50%;
@@ -1023,7 +1027,7 @@
 .post__details h1{
   font-family: "Glitch Goblin", sans-serif;
   color: #242424;
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .post__details p:nth-child(2){ 
