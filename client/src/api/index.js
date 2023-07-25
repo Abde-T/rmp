@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://rmpapi.onrender.com" });
+const API = axios.create({ baseURL: "https://rmpapi.onrender.com/" });
 //https://rmpapi.onrender.com/
+//http://localhost:3000/
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -14,7 +15,6 @@ API.interceptors.request.use((req) => {
 
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const fetchPosts = () => API.get('/posts');
-export const fetchAllPosts = (page) => API.get(`/posts/projects?page=${page}`);
 export const fetchPostsByCreator = (name) => API.get(`/posts/creator?name=${name}`);
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/projects/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const createPost = (newPost) => API.post('/posts', newPost);

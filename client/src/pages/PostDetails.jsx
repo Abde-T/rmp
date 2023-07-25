@@ -16,8 +16,6 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  console.log(post);
-
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
@@ -47,7 +45,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
   }
 
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
-  console.log(recommendedPosts);
+
   return (
     <>
       <Nav currentID={currentID} setCurrentId={setCurrentId} />
@@ -69,9 +67,7 @@ const PostDetails = ({ currentID, setCurrentId }) => {
             <p>{post.tags?.map((tag) => `#${tag} `)}</p>
             <p>
               Created by:
-              <Link to={`/creators/${post.name}`}>
                 <span>{` ${post.name}`}</span>
-              </Link>
             </p>
             <p>{post.message}</p>
             

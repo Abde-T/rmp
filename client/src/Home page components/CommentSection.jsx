@@ -14,7 +14,7 @@ const CommentSection = ({ post }) => {
     const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
     setComment('');
     setComments(newComments);
-    commentsRef.current.scrollIntoView();
+    commentsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -29,7 +29,8 @@ const CommentSection = ({ post }) => {
               <strong>{c.split(': ')[0]} : </strong>
               {c.split(':')[1]}
             </p>
-          ))):(<img src={noCom} alt="noComments"  className='noCom__image'/>)}
+          ))):(<img src={noCom} alt="noComments"  className='noCom__image'/>
+          )}
           <div ref={commentsRef}/>
           </div>
         </div>
