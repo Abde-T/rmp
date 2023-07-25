@@ -4,6 +4,7 @@ import { MuiChipsInput } from "mui-chips-input";
 import SearchIcon from '@mui/icons-material/Search';
 import { getPostsBySearch } from "../actions/posts";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const PhoneSearchMenu = () => {
   const [anchorel, setAnchorel] = React.useState(null);
@@ -11,6 +12,7 @@ const PhoneSearchMenu = () => {
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const searchPost = () => {
     if (search.trim() || tags) {

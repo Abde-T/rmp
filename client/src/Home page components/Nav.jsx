@@ -21,8 +21,6 @@ import LoginIcon from "@mui/icons-material/Login";
 
 const Nav = ({ currentID, setCurrentId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  console.log(user);
-
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,13 +33,10 @@ const Nav = ({ currentID, setCurrentId }) => {
 
   useEffect(() => {
     const token = user?.token;
-
     if (token) {
       const decodedToken = decode(token);
-
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
@@ -99,7 +94,17 @@ const Nav = ({ currentID, setCurrentId }) => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               variant="standard"
+
             />
+            <Divider 
+             orientation="vertical"
+             flexItem sx={{ borderRightWidth: 5 }} 
+             style={{ background: '#24242493', 
+             boxShadow:'2px 2px #242424',
+             borderRadius:'4px'
+            }}
+            />
+
             <MuiChipsInput
               size="small"
               className="input_tags"

@@ -11,7 +11,6 @@ const PhoneSortMenu = () => {
 
     const handleFilterChange = (value) => {
       setFilterValue(value);
-      console.log(setFilterValue)
       dispatch(setFilterCriteria(value));
     };
 

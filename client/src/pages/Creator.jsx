@@ -19,8 +19,6 @@ const Creator = ({ currentID, setCurrentId }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const { sortBy } = useSelector((state) => state.filter);
 
-  console.log(user);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -88,13 +86,15 @@ const Creator = ({ currentID, setCurrentId }) => {
             ) : null}
           </div>
 
-          {isLoading ? (
-            <CircularProgress />
+          {isLoading ? ( 
+            <div className="loader">
+              <CircularProgress />
+            </div>
           ) : (
             <div className="creatorPost__wrapper">
               <Masonry
                 columns={{ xs: 2, sm: 2, md: 2, lg: 4, xl: 5 }}
-                spacing={{ xs: 1, sm: 2, md: 3 }}
+                spacing={{ xs: 2, sm: 2, md: 3 }}
                 height={40}
               >
                 {filteredPosts?.map((post, index) => (
