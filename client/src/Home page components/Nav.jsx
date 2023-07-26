@@ -98,7 +98,7 @@ const Nav = ({ currentID, setCurrentId }) => {
             />
             <Divider 
              orientation="vertical"
-             flexItem sx={{ borderRightWidth: 5 }} 
+             flexItem sx={{ borderRightWidth: 3 }} 
              style={{ background: '#24242493', 
              boxShadow:'2px 2px #242424',
              borderRadius:'4px'

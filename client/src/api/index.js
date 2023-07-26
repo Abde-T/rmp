@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "https://rmpapi.onrender.com/" });
+const API = axios.create({ baseURL: "https://rmpapi.onrender.com//" });
 //https://rmpapi.onrender.com/
 //http://localhost:3000/
 
