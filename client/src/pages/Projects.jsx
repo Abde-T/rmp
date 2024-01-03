@@ -19,7 +19,7 @@ const Projects = () => {
   const { sortBy } = useSelector((state) => state.filter);
   const [currentID, setCurrentId] = useState(0);
 
-  console.log(posts);
+  // console.log(posts);
 
   const query = useQuery();
   const page = query.get("page") || 1;

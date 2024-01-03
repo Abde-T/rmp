@@ -1,3 +1,6 @@
+
+![laptop](https://github.com/Abde-T/rmp/assets/122224463/9d999e6c-9c8f-445d-b36d-c4c929072505)
+
 Review My Project (RMP) is a full-stack web application developed using the MERN (MongoDB, Express.js, React, Node.js) stack. It serves as a platform for users to share and evaluate projects, fostering a collaborative environment for feedback and improvement.
 
 Key Features:

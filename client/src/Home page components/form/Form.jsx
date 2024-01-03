@@ -15,7 +15,7 @@ const Form = ({ currentID, setCurrentId }) => {
     tags: [],
     selectedFile: "",
   });
-  console.log(postData);
+  // console.log(postData);
   const navigate = useNavigate();
   const post = useSelector((state) =>
     currentID
@@ -50,7 +50,7 @@ const Form = ({ currentID, setCurrentId }) => {
       500, // maxWidth
       500, // maxHeight
       "JPEG", // compressFormat
-      80, // quality (0 to 100)
+      90, // quality (0 to 100)
       0, // rotation (0, 90, 180, or 270)
       (uri) => {
         setPostData({ ...postData, selectedFile: uri });
