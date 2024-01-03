@@ -1,6 +1,5 @@
 import axios from "axios";
-// "https://rmpapi.onrender.com" ||
-const API_BASE_URL =   'http://localhost:3000'
+const API_BASE_URL =  "https://rmpapi.onrender.com" || 'http://localhost:3000'
 const API = axios.create({ baseURL: API_BASE_URL});
 
 API.interceptors.request.use((req) => {
